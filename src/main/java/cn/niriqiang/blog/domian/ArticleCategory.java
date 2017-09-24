@@ -1,4 +1,4 @@
-package cn.niriqiang.domian;
+package cn.niriqiang.blog.domian;
 
 import lombok.Data;
 
@@ -18,7 +18,7 @@ public class ArticleCategory {
     @GeneratedValue
     private Integer id;
     @NotNull(message = "不能为空")
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 20)
     private String typeName;
     @NotNull(message = "不能为空")
     @Column(nullable = false)

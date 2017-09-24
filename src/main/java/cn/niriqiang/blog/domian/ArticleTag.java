@@ -1,4 +1,4 @@
-package cn.niriqiang.domian;
+package cn.niriqiang.blog.domian;
 
 import lombok.Data;
 
@@ -16,6 +16,6 @@ public class ArticleTag {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 20)
     private String tagName;
 }
