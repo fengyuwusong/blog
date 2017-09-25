@@ -4,17 +4,17 @@ spring:
     url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf8
     username: root
     password: admin
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    database: mysql
-#    database-platform: cn.niriqiang.blog.util.MySQL5DialectUTF8Util
+    type: com.alibaba.druid.pool.DruidDataSource
   http:
     encoding:
       force: true
       charset: UTF-8
       enabled: true
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.niriqiang.blog.domain
+
 server:
   port: 80
   tomcat:
