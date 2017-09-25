@@ -1,10 +1,10 @@
 package cn.niriqiang.blog.domian;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  * Created by fengyuwusong on 2017/9/24 16:23.
  */
-public interface ArticleTagRepository extends JpaRepository<ArticleTag, Integer> {
+public interface ArticleTagRepository extends PagingAndSortingRepository<ArticleTag, Integer> {
 
 }

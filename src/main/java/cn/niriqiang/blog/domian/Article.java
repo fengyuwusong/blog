@@ -29,12 +29,13 @@ public class Article {
 
     @NotNull(message = "分类不能为空")
     @JoinColumn(name = "categoryId", nullable = false)
-    @ManyToOne(targetEntity = ArticleCategory.class, cascade = {CascadeType.PERSIST})
+    @ManyToOne(targetEntity = ArticleCategory.class)
     private ArticleCategory articleCategory;
 
     @Column(nullable = false)
-    @OneToMany(targetEntity = ArticleTag.class, cascade = {CascadeType.PERSIST})
+    @OneToMany(targetEntity = ArticleTag.class, fetch = FetchType.EAGER, cascade = {})
     private List<ArticleTag> articleTags;
+
 
     @NotNull(message = "内容不能为空")
     @Column(name = "content", nullable = false, columnDefinition = "text")

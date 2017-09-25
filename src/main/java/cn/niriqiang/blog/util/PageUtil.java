@@ -13,7 +13,7 @@ import org.springframework.data.domain.Sort;
 public class PageUtil {
     //    @Value("${page.size}")
 //    todo 配置文件加载
-    private static Integer size = 10;
+    private static Integer size = 2;
 
     public static Integer getSize() {
         return size;
@@ -34,6 +34,10 @@ public class PageUtil {
 
     public static Pageable generate(int page, Sort sort) {
         return generate(page, size, sort);
+    }
+
+    public static Pageable generate() {
+        return generate(0, size, null);
     }
 
 }

@@ -2,7 +2,7 @@ package cn.niriqiang.blog.service;
 
 
 import cn.niriqiang.blog.domian.Article;
-import cn.niriqiang.blog.domian.ArticlePageRepository;
+import cn.niriqiang.blog.domian.ArticleRepository;
 import cn.niriqiang.blog.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ArticleService {
     @Autowired
-    private ArticlePageRepository repository;
+    private ArticleRepository repository;
 
     /**
      * 分页展示
