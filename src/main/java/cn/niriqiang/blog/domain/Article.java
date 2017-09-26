@@ -22,7 +22,7 @@ public class Article {
     private String description;
 
     @NotNull(message = "分类不能为空")
-    private ArticleCategory articleCategory;
+    private Category category;
 
     private List<Tag> articleTags;
 

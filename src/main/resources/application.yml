@@ -14,12 +14,28 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: cn.niriqiang.blog.domain
+  configuration:
+    auto-mapping-unknown-column-behavior: warning
+    map-underscore-to-camel-case: true
+    default-fetch-size: 50
+    default-statement-timeout: 10
+    use-generated-keys: true
 
 server:
   port: 80
   tomcat:
     uri-encoding: UTF-8
 
-page:
-  size: 10
+logging:
+  level:
+    cn.niriqiang.blog.domain: debug
 
+#pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count:countSql
+
+page:
+  size: 3
