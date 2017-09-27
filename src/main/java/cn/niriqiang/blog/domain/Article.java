@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by fengyuwusong on 2017/9/22 17:11.
@@ -17,14 +17,14 @@ public class Article {
     @NotNull(message = "标题不能为空")
     private String title;
 
-    private String secTitle;
-
     private String description;
 
     @NotNull(message = "分类不能为空")
     private Category category;
 
-    private List<Tag> articleTags;
+    private Integer categoryId;
+
+    private Set<Tag> articleTags;
 
 
     @NotNull(message = "内容不能为空")

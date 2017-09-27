@@ -16,7 +16,7 @@ public class CategoryServiceTest extends BlogApplicationTests {
     @Test
     public void insertCategory() throws Exception {
         Category category = new Category();
-        category.setCategoryName("name1");
+        category.setCategoryName("77777");
         category.setDescription("description1");
         System.out.println(categoryService.insertCategory(category).toString());
     }

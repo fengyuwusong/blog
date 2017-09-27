@@ -26,7 +26,7 @@ public class CategoryService {
         try {
             findByCategoryName(category.getCategoryName());
         } catch (CategoryException e) {
-            category.setId(mapper.insert(category));
+            mapper.insert(category);
             return ResultUtil.success(ResultEnum.OK, category);
         }
         throw new CategoryException(ResultEnum.ADD_EXITS);

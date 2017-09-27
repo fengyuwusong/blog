@@ -16,7 +16,7 @@ public class TagServiceTest extends BlogApplicationTests {
     @Test
     public void insertTag() throws Exception {
         Tag tag = new Tag();
-        tag.setTagName("tag1");
+        tag.setTagName("4444");
         System.out.println(tagService.insertTag(tag).toString());
     }
 
