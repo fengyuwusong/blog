@@ -1,173 +1,170 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
 /*中间部分*/
 .middle{
 	width: 1170px;
-	height: 2000px;
 	margin: auto;
 	padding: 20px;
 }
+/*左边文章*/
 .middle .left{
+	width: 900px;
+	float:left;
+	margin-left: -25px;
+}
+.middle .left ul{
+	list-style: none;
+}
+
+.middle .left li{
+    margin: 20px auto;
+    padding: 10px;
+    position:relative;
+    background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(#fff), to(#f3f3f3), color-stop(.1,#fff));
+    border: 1px solid #ccc;
+    -webkit-border-radius: 60px 5px;
+    -webkit-box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.1) inset;
+}
+.middle .left li:before{
+    content: '';
+    width: 50px;
+    height: 50px;
+    top:0; right:0;
+    position:absolute;
+    display: inline-block;
+    z-index:-1;
+    -webkit-box-shadow: 10px -10px 8px rgba(0, 0, 0, 0.2);
+    -webkit-transform: rotate(2deg)
+                        translate(-14px,20px)
+                           skew(-20deg);
+}
+.middle .left li:after{
+    content: '';
+    width: 100px;
+    height: 100px;
+    top:0; left:0;
+    position:absolute;
+    z-index:-1;
+    display: inline-block;
+    -webkit-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
+    -webkit-transform: rotate(2deg)
+                        translate(20px,25px)
+                           skew(20deg);
+}
+.middle .left p{
+	padding: 10px;
+	/*margin-top: 15px;*/
+    text-align: justify;
+}
+.middle .left .description{
+	font-size: 15px;
+	color:gray;
+}
+
+h1{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.middle .left a{
+	font-size: 28px;
+	color:#4183c4;
+}
+.middle .left a:hover{
+	color:#23527c;
+}
+
+.middle .left .essay_message{
+	display: inline-block;
+	font-size: 12px;
+	color:gray;
+}
+.essay_message span{
+	padding-left: 15px;
+}
+.middle .right{
+	margin-top: 12px;
 	float: left;
-    width: 270px;
-    height: 120px;
-    /*height:auto;*/
-    background-color: yellow;
+    width: 275px;
+    margin-left: 15px;
+    color: #4183c4;
 }
 .side_child{
-	border: 1px solid #ccc;
-	margin-bottom: 10px;
-    background-color: #fff;
+	width: 250px;
+    margin: 10px auto;
+    padding: 10px;
+    /*min-height: 200px;*/
+    position:relative;
+    display: inline-block;
+    background: -webkit-gradient(linear, 0% 20%, 0% 1000%, from(#fff), to(#fff), color-stop(.1,#f3f3f3));
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.1) inset;
+    -webkit-border-bottom-right-radius: 6px 50px;   
+}
+.side_child:before{
+    content: '';
+    width: 50px;
+    height: 100px;
+    position:absolute;
+    bottom:0; right:0;
+    -webkit-box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
+    z-index:-1;
+    -webkit-transform: translate(-35px,-40px)
+                        skew(0deg,30deg)
+                        rotate(-25deg);
+}
+.side_child:after{
+      content: '';
+    width: 100px;
+    height: 100px;
+    top:0; left:0;
+    position:absolute;
+    display: inline-block;
+    z-index:-1;
+    -webkit-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
+    -webkit-transform: rotate(2deg)
+                        translate(20px,25px)
+                        skew(20deg);
+}
+.part_title{
+	padding: 5px 10px ;
+	font-weight: bold;
+	text-align:center;
+	margin-bottom: 5px;
 }
 .side_child ul{
 	list-style:none;
 }
-.part a:link, .part a:visited {
-    color: #c88326;
+.side_child li{
+	line-height: 24px;
+}
+.part i{
+	color: #4183c4;
+	padding-right: 4px;
+}
+.part a{
+	color: #4183c4;
 }
 .part a:hover{
-	 color: #e63;
+	 color: #23527c;
 }
-.part_title{
-	padding: 5px 10px ;
-	background-color: #f5f5f5;
-	font-weight: bold;
+.part span{
+	/*display: inline-block;
+	border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 25px;*/
+    margin-bottom: 5px;
 }
-.search input{
-    padding: 2px;
-    height: 26px;
-    width: 200px;
-    margin: 7px 0 14px 37px;
-}
-.fa-search{
-	margin-left: -22px;
-}
-.middle .logo{
-    width: 150px;
-    height: 150px;
-    margin: 20px auto;
-	border-radius: 50%;
-	background-image: url(../img/pic.png);
-	background-size: 100%;
-}
-.middle .name{
-    text-align: center;
-    font-size: 20px;
-}
-.content{
-	width: 170px;
-	margin: 10px auto;
-	height: 50px;
-}
-.plus{
-	width: 60px;
-    float: left;
-    background: #999;
-    padding: 6px;
-}
-.fa-plus,.fa-qq{
-	color: white;
-}
-.plus:after{
-	color: white;
-	content: " 加关注";
-	font-size: 1px;
-	cursor: pointer;
-}
-.contect{
-	width: 60px;
-    float: right;
-    background: #999;
-    padding: 6px;
-}
-.contect:after{
-	color: white;
-	content: " 私聊我";
-	font-size: 1px;
-	cursor: pointer;
-}
-/*右边文章*/
-.middle .right{
-	width: 860px;
-	/*height: 300px;*/
-	/*background-color: red;*/
-	float:left;
-	margin-left: 25px;
-}
-.middle .right ul{
-	list-style: none;
-}
-.middle .right li{
-	padding-top: 30px;
-    padding-bottom: 30px;
-    border-bottom:1px solid #eee;
-    /*box-sizing: 0 0 0 5px rgba(0,0,0,0.1);*/
-}
-.middle .right a{
-	font-size: 30px;
-	color:#4183c4;
-}
-.middle .right a:hover{
-	color:#23527c;
-}
-.middle .right .description{
-	font-size: 18px;
-	color:gray;
-}
-.middle .right .date{
+.hot_tags span{
 	display: inline-block;
-	font-size: 18px;
-	color:gray;
+	border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 25px;
+    margin-bottom: 5px;
 }
-.middle .right p{
-	padding-right: 10px;
-}
-/*右边*/
-/*.middle .right{
-	width: 34%;
-	height: 400px;
-	float: left;
-}
-.middle .right .repositories{
-	padding-top: 26px;
-	text-align: center;
-	font-size: 24px;
-}
-
-.thumbnail{
-	margin: 4px;
-	background-color: #4183c4;
-    border-radius: 4px;
-    opacity: 0.8;
-}
-.thumbnail:hover{
-    opacity: 1;
-
-}
-.card_image{
-	position: relative;
-	width:97%;
-	height: 120px;
-	background-color: white;
-	margin: auto;
-	top: 6px;
-    border-radius: 4px;
-}
-.card_image,.card_image_cell{
-	text-align: center;
-    margin: auto;
-    line-height: 120px;
-}
-.card_description p{
-	padding-top: 0px;
-	text-align:center;
-    font-size: 14px;
-    padding:12px;
-}
-
-.card_detail{
-	font-size: 14px;
-	text-align:center;
-	padding-bottom: 12px;
-}
-.card_detail span{
-	padding: 2px;
+.classify ul,.update ul{
+	margin-left: -25px;
 }

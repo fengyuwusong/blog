@@ -8,7 +8,9 @@ header{
 	margin-top: 36px;	
 	box-shadow: 0 0 5px rgba(0,0,0,0.1);
 	transition: all 0.5s ease;
+	z-index: 100;
 }
+
 .message i{
 	width: 16px;
 }
