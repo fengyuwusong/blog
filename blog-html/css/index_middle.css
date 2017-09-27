@@ -13,11 +13,11 @@ body {
 	float:left;
 	margin-left: -25px;
 }
-.middle .left ul{
+.middle .left .essay ul{
 	list-style: none;
 }
 
-.middle .left li{
+.middle .left .essay li{
     margin: 20px auto;
     padding: 10px;
     position:relative;
@@ -69,11 +69,11 @@ h1{
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
-.middle .left a{
+.middle .left .essay a{
 	font-size: 28px;
 	color:#4183c4;
 }
-.middle .left a:hover{
+.middle .left .essay a:hover{
 	color:#23527c;
 }
 
@@ -167,4 +167,7 @@ h1{
 }
 .classify ul,.update ul{
 	margin-left: -25px;
+}
+.clear{
+    clear:both;
 }

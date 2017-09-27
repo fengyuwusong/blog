@@ -1,4 +1,9 @@
 $(function(){  
+	var right=$('.middle .right');
+	var right_top=right.offset().top;
+	var header_height=$("header").height();
+	var right_right=screen.width-right.offset().left-right.width()-15;
+
 	$(window).bind("scroll", function(){ 
 	    var top = $(this).scrollTop(); // 当前窗口的滚动距离
 	    if(top>=100){
@@ -19,6 +24,11 @@ $(function(){
 	    	$(".navs a").removeClass("nonav");
 			$(".navs a").addClass("nav");
 	    }
+	    // 右侧
+	    if(top>=right_top){
+	    	right.css({"position":"fixed","margin-top":"-396px","right":right_right+"px"});
+	    }else{
+	    	right.css({"position":"","margin-top":"12px","right":""});
+	    }
 	});
-
 })
