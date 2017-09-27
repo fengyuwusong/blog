@@ -12,6 +12,15 @@ public class Result<T> {
 
     private T data;
 
+    @Override
+    public String toString() {
+        return "Result{" +
+                "code=" + code +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
     public Result(Integer code, String message) {
         this.code = code;
         this.message = message;

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  Created by fengyuwusong on 2017/9/26 23:18. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.niriqiang.blog.domain.CategoryMapper">
+    <insert id="insert">
+        INSERT INTO blog.category (category_name, description) VALUES (#{categoryName}, #{description})
+    </insert>
+    <update id="update">
+        UPDATE blog.category
+        <set>category_name=#{categoryName},description=#{description}</set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+    <delete id="delete">
+        DELETE FROM blog.category
+        WHERE id = #{_parameter}
+    </delete>
+
+
+    <select id="findByCategoryName" resultType="cn.niriqiang.blog.domain.Category">
+        SELECT *
+        FROM blog.category
+        WHERE category_name = #{_parameter}
+    </select>
+    <select id="findOne" resultType="cn.niriqiang.blog.domain.Category">
+        SELECT *
+        FROM blog.category
+        WHERE id = #{_parameter}
+    </select>
+    <select id="findAll" resultType="cn.niriqiang.blog.domain.Category">
+        SELECT *
+        FROM blog.category
+    </select>
+</mapper>

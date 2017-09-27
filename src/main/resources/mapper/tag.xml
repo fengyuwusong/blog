@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  Created by fengyuwusong on 2017/9/26 0:34. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.niriqiang.blog.domain.TagMapper">
+
+    <insert id="insert" keyProperty="id" parameterType="cn.niriqiang.blog.domain.Tag">
+        INSERT INTO blog.tag (tag_name) VALUES (#{tagName})
+    </insert>
+
+    <update id="update" parameterType="cn.niriqiang.blog.domain.Tag">
+        UPDATE blog.tag
+        SET tag_name = #{tagName}
+        WHERE id = #{id}
+    </update>
+    <delete id="delete">
+        DELETE FROM blog.tag
+        <where>tag_name=#{tagName}</where>
+        <where>id =#{_parameter}</where>
+    </delete>
+    <select id="findOne" resultType="cn.niriqiang.blog.domain.Tag">
+        SELECT *
+        FROM blog.tag
+        <where>id = #{_parameter}</where>
+    </select>
+    <select id="findByTagName" resultType="cn.niriqiang.blog.domain.Tag">
+        SELECT *
+        FROM blog.tag
+        <where>tag_name = #{_parameter}</where>
+    </select>
+    <select id="findAll" resultType="cn.niriqiang.blog.domain.Tag">
+        SELECT *
+        FROM blog.tag
+    </select>
+</mapper>
