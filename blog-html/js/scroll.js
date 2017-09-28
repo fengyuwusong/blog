@@ -4,6 +4,8 @@ $(function(){
 	var header_height=$("header").height();
 	var right_right=screen.width-right.offset().left-right.width()-20;
 
+	$(".toTop").css({"right":screen.width-right.offset().left-70+"px"});
+
 	$(window).bind("scroll", function(){ 
 	    var top = $(this).scrollTop(); // 当前窗口的滚动距离
 	    if(top>=100){
@@ -27,8 +29,14 @@ $(function(){
 	    // 右侧
 	    if(top>=right_top){
 	    	right.css({"position":"fixed","margin-top":"-396px","right":right_right+"px"});
+	    	$(".toTop").css({"display":"block"});
 	    }else{
 	    	right.css({"position":"","margin-top":"12px","right":""});
+	    	$(".toTop").css({"display":"none"});
 	    }
 	});
+	//回到顶部
+    $(".toTop").on("click",function(e) {
+        $("html,body").animate({scrollTop:0},300);    
+    });
 })
