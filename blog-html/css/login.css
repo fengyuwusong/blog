@@ -1,0 +1,47 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-image: url(../img/back.jpg);
+	background-repeat: no-repeat; 
+	background-size:100%;
+}
+.content{
+	width: 350px;
+    height: 350px;
+    margin: auto;
+    /*border: 1px solid #ccc;*/
+    border-radius: 15px;
+    background-color:rgba(96,96,96,0.4);
+    /*opacity: 0.3;*/
+}
+.title{
+	text-align: center;
+    font-size: 35px;
+    color: white;
+    padding:28px;
+}
+input{
+	display: block;
+
+}
+input[name="name"],input[name="pwd"]{
+    outline: 0;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid white;
+    padding: 4px;
+    font-size: 16px;
+    margin: auto;
+    color: white;
+    margin-top: 30px;
+}
+input[type="submit"]{
+	border-radius: 6px;
+    width: 90px;
+    height: 45px;
+    margin: 45px auto;
+    text-align: center;
+}
+input::placeholder{
+	color: white;
+}
