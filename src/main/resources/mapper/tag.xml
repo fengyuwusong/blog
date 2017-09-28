@@ -3,7 +3,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.niriqiang.blog.domain.TagMapper">
 
-    <insert id="insert" keyProperty="id" parameterType="cn.niriqiang.blog.domain.Tag">
+    <insert id="insert" keyProperty="id" parameterType="cn.niriqiang.blog.domain.Tag" useGeneratedKeys="true"
+            keyColumn="id">
         INSERT INTO blog.tag (tag_name) VALUES (#{tagName})
     </insert>
 

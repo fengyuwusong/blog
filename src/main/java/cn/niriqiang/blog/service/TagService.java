@@ -23,10 +23,13 @@ public class TagService {
     private int pageSize;
 
     Result insertTag(Tag tag) {
+        if (tag.getId() != null) {
+            throw new TagException(ResultEnum.ADD_EXITS);
+        }
         try {
             findByTagName(tag.getTagName());
         } catch (TagException e) {
-            tag.setId(mapper.insert(tag));
+            mapper.insert(tag);
             return ResultUtil.success(ResultEnum.OK, tag);
         }
         throw new TagException(ResultEnum.ADD_EXITS);
