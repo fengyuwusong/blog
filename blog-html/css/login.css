@@ -39,6 +39,7 @@ input[name="name"],input[name="pwd"]{
     color: white;
     margin-top: 30px;
 }
+/*input:-webkit-autofill { box-shadow: 0 0 0px 1000px white inset !important;}*/
 input[type="submit"]{
 	/*opacity: 0.5;*/
 	border-radius: 6px;

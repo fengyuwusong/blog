@@ -4,7 +4,7 @@ $(function(){
 	var header_height=$("header").height();
 	var right_right=screen.width-right.offset().left-right.width()-20;
 
-	$(".toTop").css({"right":screen.width-right.offset().left-70+"px"});
+	$(".toTop").css({"right":screen.width-right.offset().left-90+"px"});
 
 	$(window).bind("scroll", function(){ 
 	    var top = $(this).scrollTop(); // 当前窗口的滚动距离
