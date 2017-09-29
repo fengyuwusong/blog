@@ -49,6 +49,7 @@ input[type="submit"]{
     text-align: center;
     background-color: transparent;
     color: white;
+    border-style: solid;
 }
 input::placeholder{
 	color: white;
