@@ -7,6 +7,8 @@ import cn.niriqiang.blog.enums.ResultEnum;
 import cn.niriqiang.blog.exception.ArticleException;
 import cn.niriqiang.blog.exception.TagException;
 import cn.niriqiang.blog.util.ResultUtil;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -33,7 +35,7 @@ public class ArticleService {
     private int pageSize;
 
     @Transactional
-    Result insertArticle(Article article) {
+    public Result insertArticle(Article article) {
 //        插入未存在的标签
         if (article.getCategoryId() == null) {
             categoryService.insertCategory(article.getCategory());
@@ -52,7 +54,7 @@ public class ArticleService {
         throw new ArticleException(ResultEnum.ADD_EXITS);
     }
 
-    Result findByTitle(String title) {
+    public Result findByTitle(String title) {
         Article article = mapper.findByTitle(title);
         if (article != null) {
             return ResultUtil.success(ResultEnum.OK, article);
@@ -61,7 +63,7 @@ public class ArticleService {
         }
     }
 
-    Result findOne(int id) {
+    public Result findOne(int id) {
         Article article = mapper.findOne(id);
         if (article == null) {
             throw new ArticleException(ResultEnum.NOT_FOUND);
@@ -69,7 +71,7 @@ public class ArticleService {
         return ResultUtil.success(ResultEnum.OK, article);
     }
 
-    Result updateArticle(Article article) {
+    public Result updateArticle(Article article) {
         Article result = (Article) findOne(article.getId()).getData();
         Set<Tag> before = result.getArticleTags();
         Set<Tag> after = article.getArticleTags();
@@ -86,6 +88,16 @@ public class ArticleService {
         }
 
         return ResultUtil.error(ResultEnum.UNKNOW_ERROR);
+    }
+
+
+    public Result findAll(int currentPage) {
+        PageHelper.startPage(currentPage, pageSize);
+        Page<Article> articles = mapper.findAll();
+        if (articles.size() != 0) {
+            return ResultUtil.success(ResultEnum.OK, articles);
+        }
+        return ResultUtil.error(ResultEnum.NOT_FOUND);
     }
 
 

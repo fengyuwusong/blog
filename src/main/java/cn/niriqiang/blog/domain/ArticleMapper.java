@@ -1,5 +1,6 @@
 package cn.niriqiang.blog.domain;
 
+import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +19,5 @@ public interface ArticleMapper {
 
     Article findOne(int id);
 // todo findAll 分类查询 模糊查询 点赞 阅读
-//    List<Article> findAll();
+Page<Article> findAll();
 }
