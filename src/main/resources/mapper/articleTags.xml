@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  Created by fengyuwusong on 2017/9/27 21:13. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.niriqiang.blog.domain.ArticleTagsMapper">
+
+
+    <insert id="insert">
+        INSERT INTO blog.article_tags VALUES (#{articleId}, #{tagId});
+    </insert>
+    <update id="update">
+        UPDATE blog.article_tags
+        <set>
+            tag_id=#{tagId}
+        </set>
+        <where>
+            article_id=#{articleId}
+        </where>
+    </update>
+    <delete id="delete">
+        DELETE FROM blog.article_tags
+        WHERE tag_id = #{tagId} AND article_id = #{articleId}
+    </delete>
+    <select id="findByArticleId" resultType="cn.niriqiang.blog.domain.ArticleTags">
+        SELECT *
+        FROM blog.article_tags
+        WHERE article_id = #{_paramer}
+    </select>
+    <select id="findAll" resultType="cn.niriqiang.blog.domain.ArticleTags">
+        SELECT *
+        FROM blog.article_tags
+    </select>
+
+</mapper>
