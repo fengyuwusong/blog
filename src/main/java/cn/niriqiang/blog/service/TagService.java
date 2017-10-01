@@ -1,5 +1,7 @@
 package cn.niriqiang.blog.service;
 
+import cn.niriqiang.blog.domain.ArticleTags;
+import cn.niriqiang.blog.domain.ArticleTagsMapper;
 import cn.niriqiang.blog.domain.Tag;
 import cn.niriqiang.blog.domain.TagMapper;
 import cn.niriqiang.blog.dto.Result;
@@ -21,8 +23,10 @@ public class TagService {
     private TagMapper mapper;
     @Value("${page.size}")
     private int pageSize;
+    @Autowired
+    private ArticleTagsMapper articleTagsMapper;
 
-    Result insertTag(Tag tag) {
+    public Result insertTag(Tag tag) {
         if (tag.getId() != null) {
             throw new TagException(ResultEnum.ADD_EXITS);
         }
@@ -35,7 +39,7 @@ public class TagService {
         throw new TagException(ResultEnum.ADD_EXITS);
     }
 
-    Result updateTag(Tag tag) {
+    public Result updateTag(Tag tag) {
 //        查找id是否存在
         findOne(tag.getId());
 //        查找更改的tagName是否已经存在
@@ -48,7 +52,7 @@ public class TagService {
         throw new TagException(ResultEnum.ADD_EXITS);
     }
 
-    Result findOne(int id) {
+    public Result findOne(int id) {
         Tag tag = mapper.findOne(id);
         if (tag != null) {
             return ResultUtil.success(ResultEnum.OK, tag);
@@ -57,7 +61,7 @@ public class TagService {
         }
     }
 
-    Result findByTagName(String tagName) {
+    public Result findByTagName(String tagName) {
         Tag tag = mapper.findByTagName(tagName);
         if (tag != null) {
             return ResultUtil.success(ResultEnum.OK, tag);
@@ -66,14 +70,18 @@ public class TagService {
         }
     }
 
-    Result findAll(int currentPage) {
+    public Result findAll(int currentPage) {
         PageHelper.startPage(currentPage, pageSize);
         Page<Tag> tagPage = mapper.findAll();
         return ResultUtil.success(ResultEnum.OK, tagPage);
     }
 
-    Result delete(int id) {
+    public Result delete(int id) {
         findOne(id);
+        ArticleTags articleTags = new ArticleTags();
+        articleTags.setTagId(id);
+//        先删除article_tags表中数据
+        articleTagsMapper.delete(articleTags);
         mapper.delete(id);
         return ResultUtil.success(ResultEnum.OK, id);
     }

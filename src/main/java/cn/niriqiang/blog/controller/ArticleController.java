@@ -37,8 +37,8 @@ public class ArticleController {
     }
 
     @ApiOperation(value = "删除")
-    @DeleteMapping
-    public Result delete(int id) {
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable int id) {
         return articleService.deleteArticle(id);
     }
 

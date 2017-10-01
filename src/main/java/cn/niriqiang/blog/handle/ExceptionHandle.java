@@ -3,6 +3,8 @@ package cn.niriqiang.blog.handle;
 import cn.niriqiang.blog.dto.Result;
 import cn.niriqiang.blog.enums.ResultEnum;
 import cn.niriqiang.blog.exception.ArticleException;
+import cn.niriqiang.blog.exception.CategoryException;
+import cn.niriqiang.blog.exception.TagException;
 import cn.niriqiang.blog.service.ArticleService;
 import cn.niriqiang.blog.util.ResultUtil;
 import org.slf4j.Logger;
@@ -23,11 +25,19 @@ public class ExceptionHandle {
     @ResponseBody
     public Result handle(Exception e) {
         if (e instanceof ArticleException) {
-            logger.error(e.getMessage());
-            ArticleException articleException = (ArticleException) e;
-            return ResultUtil.error(articleException.getCode(), articleException.getMessage());
+            logger.error("ArticleException:" + e.getMessage());
+            ArticleException exception = (ArticleException) e;
+            return ResultUtil.error(exception.getCode(), exception.getMessage());
+        } else if (e instanceof CategoryException) {
+            logger.error("CategoryException:" + e.getMessage());
+            CategoryException exception = (CategoryException) e;
+            return ResultUtil.error(exception.getCode(), exception.getMessage());
+        } else if (e instanceof TagException) {
+            logger.error("TagException:" + e.getMessage());
+            TagException exception = (TagException) e;
+            return ResultUtil.error(exception.getCode(), exception.getMessage());
         } else {
-            logger.error(ResultEnum.UNKNOW_ERROR.toString());
+            logger.error("UNKNOW_ERROR:" + ResultEnum.UNKNOW_ERROR.toString());
             return ResultUtil.error(ResultEnum.UNKNOW_ERROR);
         }
     }

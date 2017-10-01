@@ -4,6 +4,7 @@ import cn.niriqiang.blog.domain.Category;
 import cn.niriqiang.blog.domain.CategoryMapper;
 import cn.niriqiang.blog.dto.Result;
 import cn.niriqiang.blog.enums.ResultEnum;
+import cn.niriqiang.blog.exception.ArticleException;
 import cn.niriqiang.blog.exception.CategoryException;
 import cn.niriqiang.blog.util.ResultUtil;
 import com.github.pagehelper.Page;
@@ -22,7 +23,10 @@ public class CategoryService {
     @Value("${page.size}")
     private int pageSize;
 
-    Result insertCategory(Category category) {
+    @Autowired
+    private ArticleService articleService;
+
+    public Result insertCategory(Category category) {
         try {
             findByCategoryName(category.getCategoryName());
         } catch (CategoryException e) {
@@ -32,7 +36,7 @@ public class CategoryService {
         throw new CategoryException(ResultEnum.ADD_EXITS);
     }
 
-    Result updateCategory(Category category) {
+    public Result updateCategory(Category category) {
 //        查找id是否存在
         Category res = (Category) findOne(category.getId()).getData();
 //        如果CategoryName是需要修改项 查找更改的categoryName是否已经存在
@@ -49,7 +53,7 @@ public class CategoryService {
         return ResultUtil.success(ResultEnum.OK, category);
     }
 
-    Result findOne(int id) {
+    public Result findOne(int id) {
         Category category = mapper.findOne(id);
         if (category != null) {
             return ResultUtil.success(ResultEnum.OK, category);
@@ -58,7 +62,7 @@ public class CategoryService {
         }
     }
 
-    Result findByCategoryName(String categoryName) {
+    public Result findByCategoryName(String categoryName) {
         Category category = mapper.findByCategoryName(categoryName);
         if (category != null) {
             return ResultUtil.success(ResultEnum.OK, category);
@@ -67,15 +71,21 @@ public class CategoryService {
         }
     }
 
-    Result findAll(int currentPage) {
+    public Result findAll(int currentPage) {
         PageHelper.startPage(currentPage, pageSize);
         Page<Category> categoryPage = mapper.findAll();
         return ResultUtil.success(ResultEnum.OK, categoryPage);
     }
 
-    Result delete(int id) {
+    public Result delete(int id) {
         findOne(id);
-        mapper.delete(id);
-        return ResultUtil.success(ResultEnum.OK, id);
+//        查找该分类下的文章是否存在 若存在则不能删除
+        try {
+            articleService.findByCategory(1, id);
+        } catch (ArticleException e) {
+            mapper.delete(id);
+            return ResultUtil.success(ResultEnum.OK, id);
+        }
+        throw new CategoryException(ResultEnum.DELETE_FALSE);
     }
 }
