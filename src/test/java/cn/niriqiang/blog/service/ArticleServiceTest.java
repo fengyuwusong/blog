@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -96,6 +97,48 @@ public class ArticleServiceTest extends BlogApplicationTests {
     public void findAll() {
         Page<Article> articles = (Page<Article>) articleService.findAll(1).getData();
         System.out.println(articles.getResult().get(0));
+    }
+
+
+    @Test
+    public void delete() {
+        int id = 1;
+        try {
+            System.out.println(articleService.deleteArticle(id));
+        } catch (ArticleException e) {
+            System.out.println(e.getMessage());
+        }
+
+        id = 2;
+        System.out.println(articleService.deleteArticle(id));
+    }
+
+    @Test
+    public void findByCategory() {
+        int cid = 1;
+        Result result = articleService.findByCategory(1, cid);
+        Page<Article> articles = (Page<Article>) result.getData();
+        List<Article> list = articles.getResult();
+        System.out.println(list.get(0));
+        try {
+            cid = 2;
+            result = articleService.findByCategory(1, cid);
+        } catch (ArticleException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void search() {
+
+        try {
+            Result result = articleService.search(1, "1111");
+            Page<Article> articles = (Page<Article>) result.getData();
+            List<Article> list = articles.getResult();
+            System.out.println(list.get(0));
+        } catch (ArticleException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

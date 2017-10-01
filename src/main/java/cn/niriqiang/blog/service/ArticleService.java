@@ -87,18 +87,53 @@ public class ArticleService {
             return ResultUtil.success(ResultEnum.OK, article);
         }
 
-        return ResultUtil.error(ResultEnum.UNKNOW_ERROR);
+        throw new ArticleException(ResultEnum.UNKNOW_ERROR);
     }
 
 
-    public Result findAll(int currentPage) {
+    public Result<Page<Article>> findAll(int currentPage) {
         PageHelper.startPage(currentPage, pageSize);
         Page<Article> articles = mapper.findAll();
         if (articles.size() != 0) {
             return ResultUtil.success(ResultEnum.OK, articles);
         }
-        return ResultUtil.error(ResultEnum.NOT_FOUND);
+        throw new ArticleException(ResultEnum.NOT_FOUND);
     }
+
+    @Transactional
+    public Result deleteArticle(int id) {
+
+        ArticleTags articleTags = new ArticleTags();
+        articleTags.setArticleId(id);
+        articleTagsMapper.delete(articleTags);
+
+        int res = mapper.delete(id);
+        if (res == 1) {
+            return ResultUtil.success(ResultEnum.OK, id);
+        }
+        throw new ArticleException(ResultEnum.NOT_FOUND);
+    }
+
+
+    public Result<Page<Article>> findByCategory(int currentPage, int cid) {
+        PageHelper.startPage(currentPage, pageSize);
+        Page<Article> articles = mapper.findByCategory(cid);
+        if (articles.size() != 0) {
+            return ResultUtil.success(ResultEnum.OK, articles);
+        }
+        throw new ArticleException(ResultEnum.NOT_FOUND);
+    }
+
+
+    public Result<Page<Article>> search(int currentPage, String keyWord) {
+        PageHelper.startPage(currentPage, pageSize);
+        Page<Article> articles = mapper.search(keyWord);
+        if (articles.size() != 0) {
+            return ResultUtil.success(ResultEnum.OK, articles);
+        }
+        throw new ArticleException(ResultEnum.NOT_FOUND);
+    }
+
 
 
     /**
@@ -122,8 +157,6 @@ public class ArticleService {
                 throw e;
             }
         }
-
     }
-
 
 }

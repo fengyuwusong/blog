@@ -34,16 +34,16 @@
     <update id="update">
         UPDATE blog.article
         <set>
-            <if test="title!=null and !&quot;&quot;.equals(title.trim())">
+            <if test="title!=null">
                 title=#{title},
             </if>
-            <if test="author!=null and !&quot;&quot;.equals(author.trim())">
+            <if test="author!=null">
                 author=#{author},
             </if>
-            <if test="content!=null and !&quot;&quot;.equals(content.trim())">
+            <if test="content!=null">
                 content=#{content},
             </if>
-            <if test="description!=null and !&quot;&quot;.equals(description.trim())">
+            <if test="description!=null">
                 description=#{description},
             </if>
             <if test="categoryId!=null">
@@ -51,6 +51,22 @@
             </if>
         </set>
     </update>
+    <update id="up">
+        UPDATE blog.article
+        SET star = star + 1
+        WHERE id = #{parameter}
+    </update>
+    <update id="read">
+        UPDATE blog.article
+        SET article.read_num = article.read_num + 1
+        WHERE id = #{parameter}
+    </update>
+
+
+    <delete id="delete">
+        DELETE FROM blog.article
+        WHERE id = #{parameter}
+    </delete>
     <select id="findByTitle" resultMap="articleMap">
         SELECT a.*,b.id cid,category_name,b.description cdescription,d.id tid, tag_name FROM blog.article a LEFT JOIN
         blog.category b on
@@ -80,6 +96,25 @@
                                 a.category_id = b.id
             LEFT JOIN blog.article_tags c ON a.id = c.article_id
             LEFT JOIN blog.tag d ON c.tag_id = d.id
+    </select>
+    <select id="findByCategory" resultMap="articleMap">
+        SELECT a.*,b.id cid,category_name,b.description cdescription,d.id tid, tag_name FROM blog.article a LEFT JOIN
+        blog.category b on
+        a.category_id=b.id LEFT JOIN blog.article_tags c ON a.id=c.article_id LEFT JOIN blog.tag d ON c.tag_id = d.id
+        <where>
+            category_id=#{_parameter}
+        </where>
+    </select>
+
+    <select id="search" resultMap="articleMap">
+        SELECT a.*,b.id cid,category_name,b.description cdescription,d.id tid, tag_name FROM blog.article a LEFT JOIN
+        blog.category b on
+        a.category_id=b.id LEFT JOIN blog.article_tags c ON a.id=c.article_id LEFT JOIN blog.tag d ON c.tag_id = d.id
+        <where>
+            title LIKE "%"#{parameter}"%" or category_name LIKE "%"#{parameter}"%" or a.description LIKE
+            "%"#{parameter}"%" or tag_name LIKE "%"#{parameter}"%"
+        </where>
+        ORDER BY a.id
     </select>
 
 </mapper>

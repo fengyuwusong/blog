@@ -1,8 +1,11 @@
 package cn.niriqiang.blog.enums;
 
+import io.swagger.annotations.ApiModel;
+
 /**
  * Created by fengyuwusong on 2017/9/24 16:29.
  */
+@ApiModel
 public enum ResultEnum {
     OK(200, "成功"),
     NOT_BLANK(0, "不能为空"),

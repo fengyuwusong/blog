@@ -18,6 +18,18 @@ public interface ArticleMapper {
     int update(Article article);
 
     Article findOne(int id);
-// todo findAll 分类查询 模糊查询 点赞 阅读
-Page<Article> findAll();
+
+    Page<Article> findAll();
+
+    int delete(int id);
+
+    Page<Article> findByCategory(int cid);
+
+    Page<Article> search(String keyWord);
+
+    int up(int id);
+
+    int read(int id);
+
+
 }

@@ -18,7 +18,12 @@
     </update>
     <delete id="delete">
         DELETE FROM blog.article_tags
-        WHERE tag_id = #{tagId} AND article_id = #{articleId}
+        <if test="tagId!=null">
+            <where>tag_id = #{tagId}</where>
+        </if>
+        <if test="articleId!=null">
+            <where>article_id = #{articleId}</where>
+        </if>
     </delete>
     <select id="findByArticleId" resultType="cn.niriqiang.blog.domain.ArticleTags">
         SELECT *
