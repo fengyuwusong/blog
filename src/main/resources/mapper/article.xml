@@ -47,9 +47,11 @@
                 description=#{description},
             </if>
             <if test="categoryId!=null">
-                category_id=#{categoryId}
+                category_id=#{categoryId},
             </if>
+            update_time=now()
         </set>
+        where id=#{id}
     </update>
     <update id="up">
         UPDATE blog.article

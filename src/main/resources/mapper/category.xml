@@ -8,7 +8,14 @@
     </insert>
     <update id="update">
         UPDATE blog.category
-        <set>category_name=#{categoryName},description=#{description}</set>
+        <set>
+            <if test="categoryName!=null">
+                category_name=#{categoryName},
+            </if>
+            <if test="description!=null">
+                description=#{description}
+            </if>
+        </set>
         <where>
             id=#{id}
         </where>

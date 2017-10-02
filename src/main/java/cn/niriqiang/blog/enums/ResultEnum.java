@@ -12,7 +12,8 @@ public enum ResultEnum {
     UNKNOW_ERROR(-1, "未知错误"),
     NOT_FOUND(-2, "目标未找到"),
     ADD_EXITS(-3, "目标已存在"),
-    DELETE_FALSE(-4, "不能删除相关文章还存在的分类");
+    DELETE_FALSE(-4, "不能删除相关文章还存在的分类"),
+    CURRENT_PAGE_NOT_NULL(-5, "页码不能为空");
 
     ResultEnum(Integer code, String message) {
         this.code = code;

@@ -5,19 +5,13 @@ import cn.niriqiang.blog.enums.ResultEnum;
 /**
  * Created by fengyuwusong on 2017/9/27 0:46.
  */
-public class CategoryException extends RuntimeException {
-    private Integer code;
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
+public class CategoryException extends Exception {
     public CategoryException(ResultEnum resultEnum) {
-        super(resultEnum.getMessage());
-        this.code = resultEnum.getCode();
+        super(resultEnum);
     }
+
+    public CategoryException(String message, Integer code) {
+        super(message, code);
+    }
+
 }

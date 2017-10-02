@@ -5,7 +5,6 @@ import cn.niriqiang.blog.enums.ResultEnum;
 import cn.niriqiang.blog.exception.ArticleException;
 import cn.niriqiang.blog.exception.CategoryException;
 import cn.niriqiang.blog.exception.TagException;
-import cn.niriqiang.blog.service.ArticleService;
 import cn.niriqiang.blog.util.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ControllerAdvice
 public class ExceptionHandle {
 
-    private final static Logger logger = LoggerFactory.getLogger(ArticleService.class);
+    private final static Logger logger = LoggerFactory.getLogger(ExceptionHandle.class);
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
@@ -36,10 +35,10 @@ public class ExceptionHandle {
             logger.error("TagException:" + e.getMessage());
             TagException exception = (TagException) e;
             return ResultUtil.error(exception.getCode(), exception.getMessage());
-        } else {
-            logger.error("UNKNOW_ERROR:" + ResultEnum.UNKNOW_ERROR.toString());
-            return ResultUtil.error(ResultEnum.UNKNOW_ERROR);
         }
+        logger.error("UNKNOW_ERROR:");
+        e.printStackTrace();
+        return ResultUtil.error(ResultEnum.UNKNOW_ERROR);
     }
 
 }

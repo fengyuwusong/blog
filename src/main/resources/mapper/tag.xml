@@ -13,9 +13,8 @@
         SET tag_name = #{tagName}
         WHERE id = #{id}
     </update>
-    <delete id="delete">
+    <delete id="delete" parameterType="cn.niriqiang.blog.domain.Tag">
         DELETE FROM blog.tag
-        <where>tag_name=#{tagName}</where>
         <where>id =#{_parameter}</where>
     </delete>
     <select id="findOne" resultType="cn.niriqiang.blog.domain.Tag">
