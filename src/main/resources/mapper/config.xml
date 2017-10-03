@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  Created by fengyuwusong on 2017/10/3 14:49. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.niriqiang.blog.domain.ConfigMapper">
+
+
+    <update id="update">
+        UPDATE blog.config
+        <set>
+            <if test="adminName!=null">
+                <where>admin_name = #{adminName},</where>
+            </if>
+            <if test="adminPw!=null">
+                <where>admin_pw = #{adminPw},</where>
+            </if>
+            <if test="blogName!=null">
+                <where>blog_name = #{blogName},</where>
+            </if>
+            <if test="footer!=null">
+                <where>footer = #{footer},</where>
+            </if>
+            <if test="blogPic!=null">
+                <where>blog_pic = #{blogPic},</where>
+            </if>
+            <if test="title!=null">
+                <where>title = #{title},</where>
+            </if>
+            <if test="address!=null">
+                <where>address = #{address},</where>
+            </if>
+            <if test="git!=null">
+                <where>git = #{git},</where>
+            </if>
+            <if test="gitUrl!=null">
+                <where>git_url = #{gitUrl}</where>
+            </if>
+        </set>
+    </update>
+    <update id="click">
+        UPDATE
+            blog.config
+        SET click = click + 1
+    </update>
+    <select id="login" resultType="java.lang.Integer">
+        SELECT count(id)
+        FROM blog.config
+        WHERE admin_name = #{adminName} AND admin_pw = #{adminPw};
+    </select>
+    <select id="get" resultType="cn.niriqiang.blog.domain.Config">
+        SELECT
+            blog_name,
+            footer,
+            blog_pic,
+            click,
+            title,
+            address,
+            git,
+            git_url
+        FROM blog.config
+    </select>
+
+
+</mapper>

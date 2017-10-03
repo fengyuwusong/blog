@@ -19,11 +19,13 @@ public interface ArticleMapper {
 
     Article findOne(int id);
 
-    Page<Article> findAll();
+    Page<Article> adminFindAll();
 
     int delete(int id);
 
-    Page<Article> findByCategory(int cid);
+    Page<Article> adminFindByCategory(int cid);
+
+    Page<Article> adminSearch(String keyWord);
 
     Page<Article> search(String keyWord);
 
@@ -31,5 +33,8 @@ public interface ArticleMapper {
 
     int read(int id);
 
+    Page<Article> findAll();
+
+    Page<Article> findByCategory(int cid);
 
 }

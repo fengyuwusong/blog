@@ -117,9 +117,9 @@ public class ArticleService {
     }
 
 
-    public Result<Page<Article>> findByCategory(int currentPage, int cid) {
+    public Result<Page<Article>> adminFindByCategory(int currentPage, int cid) {
         PageHelper.startPage(currentPage, pageSize);
-        Page<Article> articles = mapper.findByCategory(cid);
+        Page<Article> articles = mapper.adminFindByCategory(cid);
         if (articles.size() != 0) {
             return ResultUtil.success(ResultEnum.OK, articles);
         }
@@ -127,15 +127,14 @@ public class ArticleService {
     }
 
 
-    public Result<Page<Article>> search(int currentPage, String keyWord) {
+    public Result<Page<Article>> adminSearch(int currentPage, String keyWord) {
         PageHelper.startPage(currentPage, pageSize);
-        Page<Article> articles = mapper.search(keyWord);
+        Page<Article> articles = mapper.adminSearch(keyWord);
         if (articles.size() != 0) {
             return ResultUtil.success(ResultEnum.OK, articles);
         }
         throw new ArticleException(ResultEnum.NOT_FOUND);
     }
-
 
 
     /**
@@ -160,5 +159,58 @@ public class ArticleService {
             }
         }
     }
+
+    //    后台查看文章
+    @Transactional
+    public Result adminRead(int articleId) {
+        Result result = findOne(articleId);
+        Article article = (Article) result.getData();
+        return ResultUtil.success(ResultEnum.OK, result);
+    }
+
+
+    //    前台查看文章
+    @Transactional
+    public Result read(int articleId) {
+        mapper.read(articleId);
+        Result result = findOne(articleId);
+        Article article = (Article) result.getData();
+        if (article.getStatus() != 1) {
+            throw new ArticleException(ResultEnum.NOT_FOUND);
+        }
+        return ResultUtil.success(ResultEnum.OK, result);
+    }
+
+
+    //    后台查看全部
+    public Result<Page<Article>> adminFindAll(int currentPage) {
+        PageHelper.startPage(currentPage, pageSize);
+        Page<Article> articles = mapper.adminFindAll();
+        if (articles.size() != 0) {
+            return ResultUtil.success(ResultEnum.OK, articles);
+        }
+        throw new ArticleException(ResultEnum.NOT_FOUND);
+    }
+
+    //    前台按照分类查询全部
+    public Result<Page<Article>> findByCategory(int currentPage, int cid) {
+        PageHelper.startPage(currentPage, pageSize);
+        Page<Article> articles = mapper.findByCategory(cid);
+        if (articles.size() != 0) {
+            return ResultUtil.success(ResultEnum.OK, articles);
+        }
+        throw new ArticleException(ResultEnum.NOT_FOUND);
+    }
+
+
+    public Result<Page<Article>> search(int currentPage, String keyWord) {
+        PageHelper.startPage(currentPage, pageSize);
+        Page<Article> articles = mapper.search(keyWord);
+        if (articles.size() != 0) {
+            return ResultUtil.success(ResultEnum.OK, articles);
+        }
+        throw new ArticleException(ResultEnum.NOT_FOUND);
+    }
+
 
 }
