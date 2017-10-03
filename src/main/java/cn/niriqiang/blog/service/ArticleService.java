@@ -36,12 +36,12 @@ public class ArticleService {
 
     @Transactional
     public Result insertArticle(Article article) {
-//        todo 重写方法
 //        插入未存在的标签
         if (article.getCategoryId() == null) {
             categoryService.insertCategory(article.getCategory());
             article.setCategoryId(article.getCategory().getId());
         }
+        categoryService.findOne(article.getCategoryId());
         try {
             findByTitle(article.getTitle());
         } catch (ArticleException e) {
