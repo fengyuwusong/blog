@@ -1,5 +1,8 @@
 package cn.niriqiang.blog.aspect;
 
+import cn.niriqiang.blog.enums.ResultEnum;
+import cn.niriqiang.blog.exception.LoginException;
+import cn.niriqiang.blog.util.CookieUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -38,8 +42,16 @@ public class AdminAspect {
 
     @Before("admin()")
     public void adminDoBefore(JoinPoint joinPoint) {
-//        todo
         logger.info("AdminAspect:检查是否已经登录");
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        Cookie cookie = CookieUtil.getCookieByName(request, "name");
+        if (cookie != null) {
+            logger.info("AdminAspect:已经登录");
+        } else {
+            logger.warn("还没登录，不能使用!");
+            throw new LoginException(ResultEnum.NOT_LOGIN);
+        }
     }
 
 

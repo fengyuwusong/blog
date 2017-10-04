@@ -5,9 +5,14 @@ import cn.niriqiang.blog.domain.ConfigMapper;
 import cn.niriqiang.blog.dto.Result;
 import cn.niriqiang.blog.enums.ResultEnum;
 import cn.niriqiang.blog.exception.LoginException;
+import cn.niriqiang.blog.util.CookieUtil;
 import cn.niriqiang.blog.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by fengyuwusong on 2017/10/3 15:01.
@@ -36,7 +41,9 @@ public class ConfigService {
         config.setAdminPw(adminPw);
         int res = mapper.login(config);
         if (res == 1) {
-//            todo 设置登录cookie
+            ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+            HttpServletResponse response = attributes.getResponse();
+            CookieUtil.addCookie(response, "name", adminName, 60 * 60 * 6);
             return ResultUtil.success(ResultEnum.OK, adminName);
         }
         throw new LoginException(ResultEnum.ERROR_NAME_PW);

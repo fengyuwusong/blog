@@ -25,14 +25,21 @@
             <where>article_id = #{articleId}</where>
         </if>
     </delete>
+
     <select id="findByArticleId" resultType="cn.niriqiang.blog.domain.ArticleTags">
         SELECT *
         FROM blog.article_tags
         WHERE article_id = #{_paramer}
     </select>
+
     <select id="findAll" resultType="cn.niriqiang.blog.domain.ArticleTags">
         SELECT *
         FROM blog.article_tags
+    </select>
+    <select id="findByTagId" resultType="cn.niriqiang.blog.domain.ArticleTags">
+        SELECT *
+        FROM blog.article_tags
+        WHERE tag_id = #{_paramer}
     </select>
 
 </mapper>

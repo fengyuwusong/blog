@@ -42,7 +42,7 @@
         SET click = click + 1
     </update>
     <select id="login" resultType="java.lang.Integer">
-        SELECT count(id)
+        SELECT count(*)
         FROM blog.config
         WHERE admin_name = #{adminName} AND admin_pw = #{adminPw};
     </select>

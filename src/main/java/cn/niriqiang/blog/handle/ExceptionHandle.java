@@ -4,6 +4,7 @@ import cn.niriqiang.blog.dto.Result;
 import cn.niriqiang.blog.enums.ResultEnum;
 import cn.niriqiang.blog.exception.ArticleException;
 import cn.niriqiang.blog.exception.CategoryException;
+import cn.niriqiang.blog.exception.LoginException;
 import cn.niriqiang.blog.exception.TagException;
 import cn.niriqiang.blog.util.ResultUtil;
 import org.slf4j.Logger;
@@ -34,6 +35,10 @@ public class ExceptionHandle {
         } else if (e instanceof TagException) {
             logger.error("TagException:" + e.getMessage());
             TagException exception = (TagException) e;
+            return ResultUtil.error(exception.getCode(), exception.getMessage());
+        } else if (e instanceof LoginException) {
+            logger.error("LoginException:" + e.getMessage());
+            LoginException exception = (LoginException) e;
             return ResultUtil.error(exception.getCode(), exception.getMessage());
         }
         logger.error("UNKNOW_ERROR:");

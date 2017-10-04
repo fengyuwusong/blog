@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: admin
     type: com.alibaba.druid.pool.DruidDataSource
@@ -36,6 +36,8 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count:countSql
+  row-bounds-with-count: true
+
 
 page:
   size: 3

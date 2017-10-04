@@ -20,10 +20,11 @@
             <result property="categoryName" column="category_name"/>
             <result property="description" column="cdescription"/>
         </association>
-        <collection property="articleTags" ofType="cn.niriqiang.blog.domain.Tag">
-            <id property="id" column="tid"/>
-            <result property="tagName" column="tag_name"/>
-        </collection>
+
+        <!--<collection property="articleTags" ofType="cn.niriqiang.blog.domain.Tag">-->
+        <!--<id property="id" column="tid"/>-->
+        <!--<result property="tagName" column="tag_name"/>-->
+        <!--</collection>-->
     </resultMap>
 
 
@@ -72,9 +73,17 @@
         WHERE id = #{parameter}
     </delete>
     <select id="findByTitle" resultMap="articleMap">
-        SELECT a.*,b.id cid,category_name,b.description cdescription,d.id tid, tag_name FROM blog.article a LEFT JOIN
+        SELECT a.id,
+        a.title,
+        a.description,
+        a.author,
+        a.update_time,
+        a.create_time,
+        b.id cid,
+        category_name
+        FROM blog.article a LEFT JOIN
         blog.category b on
-        a.category_id=b.id LEFT JOIN blog.article_tags c ON a.id=c.article_id LEFT JOIN blog.tag d ON c.tag_id = d.id
+        a.category_id=b.id
         <where>
             title=#{_parameter}
         </where>
@@ -96,61 +105,78 @@
         a.update_time,
         a.create_time,
         b.id cid,
-            category_name,
-        d.id tid,
-            tag_name
+        category_name
         FROM blog.article a LEFT JOIN
             blog.category b ON
                                 a.category_id = b.id
-            LEFT JOIN blog.article_tags c ON a.id = c.article_id
-            LEFT JOIN blog.tag d ON c.tag_id = d.id
         WHERE status = 1
+        ORDER BY a.id
     </select>
     <select id="adminFindByCategory" resultMap="articleMap">
-        SELECT a.*,b.id cid,category_name,b.description cdescription,d.id tid, tag_name FROM blog.article a LEFT JOIN
+        SELECT a.id,
+        a.title,
+        a.description,
+        a.author,
+        a.update_time,
+        a.create_time,
+        b.id cid,
+        category_name
+        FROM blog.article a LEFT JOIN
         blog.category b on
-        a.category_id=b.id LEFT JOIN blog.article_tags c ON a.id=c.article_id LEFT JOIN blog.tag d ON c.tag_id = d.id
+        a.category_id=b.id
         <where>
             category_id=#{_parameter}
         </where>
+        order by a.id
     </select>
     <select id="findByCategory" resultMap="articleMap">
-        SELECT a.*,b.id cid,category_name,b.description cdescription,d.id tid, tag_name FROM blog.article a LEFT JOIN
+        SELECT a.id,
+        a.title,
+        a.description,
+        a.author,
+        a.update_time,
+        a.create_time,
+        b.id cid,
+        category_name FROM blog.article a LEFT JOIN
         blog.category b on
-        a.category_id=b.id LEFT JOIN blog.article_tags c ON a.id=c.article_id LEFT JOIN blog.tag d ON c.tag_id = d.id
+        a.category_id=b.id
         <where>
-            category_id=#{_parameter}
+            category_id=#{_parameter} and a.status=1
         </where>
-        <where>
-            a.status=1
-        </where>
+        a.id order by a.id
     </select>
 
     <select id="search" resultMap="articleMap">
-        SELECT a.*,b.id cid,category_name,b.description cdescription,d.id tid, tag_name FROM blog.article a LEFT JOIN
+        SELECT a.*,b.id cid,category_name,b.description cdescription FROM blog.article a LEFT JOIN
         blog.category b on
-        a.category_id=b.id LEFT JOIN blog.article_tags c ON a.id=c.article_id LEFT JOIN blog.tag d ON c.tag_id = d.id
+        a.category_id=b.id
         <where>
             title LIKE "%"#{parameter}"%" or category_name LIKE "%"#{parameter}"%" or a.description LIKE
             "%"#{parameter}"%" or tag_name LIKE "%"#{parameter}"%"
         </where>
-        <where>
-            status=1
-        </where>
+        and status=1
         ORDER BY a.id
     </select>
 
     <select id="adminSearch" resultMap="articleMap">
-        SELECT a.*,b.id cid,category_name,b.description cdescription,d.id tid, tag_name FROM blog.article a LEFT JOIN
+        SELECT a.id,
+        a.title,
+        a.description,
+        a.author,
+        a.update_time,
+        a.create_time,
+        b.id cid,
+        category_name
+        FROM blog.article a LEFT JOIN
         blog.category b on
-        a.category_id=b.id LEFT JOIN blog.article_tags c ON a.id=c.article_id LEFT JOIN blog.tag d ON c.tag_id = d.id
+        a.category_id=b.id
         <where>
             title LIKE "%"#{parameter}"%" or category_name LIKE "%"#{parameter}"%" or a.description LIKE
             "%"#{parameter}"%" or tag_name LIKE "%"#{parameter}"%"
         </where>
         ORDER BY a.id
     </select>
-    <select id="adminFindAll" resultType="cn.niriqiang.blog.domain.Article">
+    <select id="adminFindAll" resultMap="articleMap">
         SELECT
             a.id,
             a.title,
@@ -159,14 +185,11 @@
             a.update_time,
             a.create_time,
             b.id cid,
-            category_name,
-            d.id tid,
-            tag_name
+        category_name
         FROM blog.article a LEFT JOIN
             blog.category b ON
                                 a.category_id = b.id
-            LEFT JOIN blog.article_tags c ON a.id = c.article_id
-            LEFT JOIN blog.tag d ON c.tag_id = d.id
+        ORDER BY a.id
     </select>
 
 </mapper>

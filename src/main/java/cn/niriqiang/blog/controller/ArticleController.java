@@ -44,5 +44,12 @@ public class ArticleController {
         return articleService.search(currentPage, keyWord);
     }
 
+    @ApiOperation(value = "通过tagId查找文章系列")
+    @GetMapping("/tag/{currentPage}/{id}")
+    public Result findByTagId(@PathVariable int currentPage, @PathVariable int id) {
+        return articleService.findByTagId(currentPage, id);
+    }
+
+
 
 }

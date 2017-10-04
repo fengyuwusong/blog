@@ -9,12 +9,15 @@ import cn.niriqiang.blog.exception.TagException;
 import cn.niriqiang.blog.util.ResultUtil;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -35,6 +38,7 @@ public class ArticleService {
     private ConfigService configService;
     @Value("${page.size}")
     private int pageSize;
+
 
     @Transactional
     public Result insertArticle(Article article) {
@@ -95,13 +99,18 @@ public class ArticleService {
     }
 
 
-    public Result<Page<Article>> findAll(int currentPage) {
+    public Result findAll(int currentPage) {
 //        增加点击量
         configService.click();
         PageHelper.startPage(currentPage, pageSize);
         Page<Article> articles = mapper.findAll();
+        for (Article a :
+                articles) {
+            a.setArticleTags(findTag(a));
+        }
+        PageInfo<Article> res = articles.toPageInfo();
         if (articles.size() != 0) {
-            return ResultUtil.success(ResultEnum.OK, articles);
+            return ResultUtil.success(ResultEnum.OK, res);
         }
         throw new ArticleException(ResultEnum.NOT_FOUND);
     }
@@ -112,7 +121,6 @@ public class ArticleService {
         ArticleTags articleTags = new ArticleTags();
         articleTags.setArticleId(id);
         articleTagsMapper.delete(articleTags);
-
         int res = mapper.delete(id);
         if (res == 1) {
             return ResultUtil.success(ResultEnum.OK, id);
@@ -121,21 +129,31 @@ public class ArticleService {
     }
 
 
-    public Result<Page<Article>> adminFindByCategory(int currentPage, int cid) {
+    public Result adminFindByCategory(int currentPage, int cid) {
         PageHelper.startPage(currentPage, pageSize);
         Page<Article> articles = mapper.adminFindByCategory(cid);
+        for (Article a :
+                articles) {
+            a.setArticleTags(findTag(a));
+        }
+        PageInfo<Article> res = articles.toPageInfo();
         if (articles.size() != 0) {
-            return ResultUtil.success(ResultEnum.OK, articles);
+            return ResultUtil.success(ResultEnum.OK, res);
         }
         throw new ArticleException(ResultEnum.NOT_FOUND);
     }
 
 
-    public Result<Page<Article>> adminSearch(int currentPage, String keyWord) {
+    public Result adminSearch(int currentPage, String keyWord) {
         PageHelper.startPage(currentPage, pageSize);
         Page<Article> articles = mapper.adminSearch(keyWord);
+        for (Article a :
+                articles) {
+            a.setArticleTags(findTag(a));
+        }
+        PageInfo<Article> res = articles.toPageInfo();
         if (articles.size() != 0) {
-            return ResultUtil.success(ResultEnum.OK, articles);
+            return ResultUtil.success(ResultEnum.OK, res);
         }
         throw new ArticleException(ResultEnum.NOT_FOUND);
     }
@@ -187,34 +205,70 @@ public class ArticleService {
 
 
     //    后台查看全部
-    public Result<Page<Article>> adminFindAll(int currentPage) {
-        PageHelper.startPage(currentPage, pageSize);
+    public Result adminFindAll(int currentPage) {
+        Page page = PageHelper.startPage(currentPage, pageSize);
         Page<Article> articles = mapper.adminFindAll();
+        for (Article a :
+                articles) {
+            a.setArticleTags(findTag(a));
+        }
+        PageInfo<Article> res = articles.toPageInfo();
         if (articles.size() != 0) {
-            return ResultUtil.success(ResultEnum.OK, articles);
+            return ResultUtil.success(ResultEnum.OK, res);
         }
         throw new ArticleException(ResultEnum.NOT_FOUND);
     }
 
     //    前台按照分类查询全部
-    public Result<Page<Article>> findByCategory(int currentPage, int cid) {
+    public Result findByCategory(int currentPage, int cid) {
         PageHelper.startPage(currentPage, pageSize);
         Page<Article> articles = mapper.findByCategory(cid);
+        for (Article a :
+                articles) {
+            a.setArticleTags(findTag(a));
+        }
+        PageInfo<Article> res = articles.toPageInfo();
         if (articles.size() != 0) {
-            return ResultUtil.success(ResultEnum.OK, articles);
+            return ResultUtil.success(ResultEnum.OK, res);
         }
         throw new ArticleException(ResultEnum.NOT_FOUND);
     }
 
 
-    public Result<Page<Article>> search(int currentPage, String keyWord) {
+    public Result search(int currentPage, String keyWord) {
         PageHelper.startPage(currentPage, pageSize);
         Page<Article> articles = mapper.search(keyWord);
+        for (Article a :
+                articles) {
+            a.setArticleTags(findTag(a));
+        }
+        PageInfo<Article> res = articles.toPageInfo();
         if (articles.size() != 0) {
-            return ResultUtil.success(ResultEnum.OK, articles);
+            return ResultUtil.success(ResultEnum.OK, res);
         }
         throw new ArticleException(ResultEnum.NOT_FOUND);
     }
 
+    //    查找对应的tag
+    private Set<Tag> findTag(Article article) {
+        List<ArticleTags> articleTags = articleTagsMapper.findByArticleId(article.getId());
+        Set<Tag> tags = new HashSet<>();
+        for (ArticleTags articleTag :
+                articleTags) {
+            tags.add((Tag) tagService.findOne(articleTag.getTagId()).getData());
+        }
+        return tags;
+    }
+
+    public Result findByTagId(int currentPage, int id) {
+        PageHelper.startPage(currentPage, pageSize);
+        Page<ArticleTags> articleTags = articleTagsMapper.findByTagId(id);
+        Set<Article> articles = new HashSet<>();
+        for (ArticleTags a :
+                articleTags) {
+            articles.add((Article) findOne(a.getArticleId()).getData());
+        }
+        return ResultUtil.success(ResultEnum.OK, articles);
+    }
 
 }

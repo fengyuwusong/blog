@@ -1,5 +1,6 @@
 package cn.niriqiang.blog.domain;
 
+import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -20,4 +21,6 @@ public interface ArticleTagsMapper {
     List<ArticleTags> findByArticleId(int id);
 
     List<ArticleTags> findAll();
+
+    Page<ArticleTags> findByTagId(int id);
 }
