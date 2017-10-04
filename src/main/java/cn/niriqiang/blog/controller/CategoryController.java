@@ -1,5 +1,6 @@
 package cn.niriqiang.blog.controller;
 
+import cn.niriqiang.blog.annotation.Admin;
 import cn.niriqiang.blog.domain.Category;
 import cn.niriqiang.blog.dto.Result;
 import cn.niriqiang.blog.exception.CategoryException;
@@ -35,12 +36,14 @@ public class CategoryController {
 //        return categoryService.findByCategoryName(categoryName);
 //    }
 
+    @Admin
     @ApiOperation("更新")
     @PutMapping
     public Result update(@RequestBody Category category) {
         return categoryService.updateCategory(category);
     }
 
+    @Admin
     @ApiOperation("删除，如果已经有相关文章的话不能删除")
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable int id) {
@@ -48,6 +51,7 @@ public class CategoryController {
     }
 
 
+    @Admin
     @ApiOperation("添加")
     @PostMapping
     public Result insert(@RequestBody @Valid Category category, Errors errors) {

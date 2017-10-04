@@ -4,8 +4,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
-
 /**
  * Created by fengyuwusong on 2017/10/3 14:43.
  */
@@ -16,11 +14,9 @@ public class Config {
     private Integer id;
 
     @ApiModelProperty(value = "后台用户名")
-    @NotNull
     private String adminName;
 
     @ApiModelProperty(value = "后台密码")
-    @NotNull
     private String adminPw;
 
     @ApiModelProperty(value = "博客名")

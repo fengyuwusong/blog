@@ -4,6 +4,7 @@ import cn.niriqiang.blog.domain.Config;
 import cn.niriqiang.blog.domain.ConfigMapper;
 import cn.niriqiang.blog.dto.Result;
 import cn.niriqiang.blog.enums.ResultEnum;
+import cn.niriqiang.blog.exception.LoginException;
 import cn.niriqiang.blog.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,9 +36,10 @@ public class ConfigService {
         config.setAdminPw(adminPw);
         int res = mapper.login(config);
         if (res == 1) {
+//            todo 设置登录cookie
             return ResultUtil.success(ResultEnum.OK, adminName);
         }
-        return ResultUtil.error(ResultEnum.ERROR_NAME_PW);
+        throw new LoginException(ResultEnum.ERROR_NAME_PW);
     }
 
     public Result click() {

@@ -1,5 +1,6 @@
 package cn.niriqiang.blog.controller;
 
+import cn.niriqiang.blog.annotation.Admin;
 import cn.niriqiang.blog.domain.Article;
 import cn.niriqiang.blog.dto.Result;
 import cn.niriqiang.blog.exception.ArticleException;
@@ -15,6 +16,7 @@ import javax.validation.Valid;
 /**
  * Created by fengyuwusong on 2017/9/28 9:24.
  */
+@Admin
 @Api(value = "后台文章管理接口")
 @RestController
 @RequestMapping("/admin/article")

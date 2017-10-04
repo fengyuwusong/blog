@@ -31,6 +31,8 @@ public class ArticleService {
     private TagService tagService;
     @Autowired
     private ArticleTagsMapper articleTagsMapper;
+    @Autowired
+    private ConfigService configService;
     @Value("${page.size}")
     private int pageSize;
 
@@ -94,6 +96,8 @@ public class ArticleService {
 
 
     public Result<Page<Article>> findAll(int currentPage) {
+//        增加点击量
+        configService.click();
         PageHelper.startPage(currentPage, pageSize);
         Page<Article> articles = mapper.findAll();
         if (articles.size() != 0) {
