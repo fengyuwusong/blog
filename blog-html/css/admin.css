@@ -1,4 +1,80 @@
 body{
 	margin: 0;
 	padding: 0;
+	height: auto;
+}
+header{
+	height: 70px;
+	border-bottom: 2px solid gray;
+}
+.left{
+	float: left;
+    font-size: 37px;
+    margin-left: 30px;
+    padding: 26px;
+}
+.right{
+	float: right;
+    /*margin-right: 30px;*/
+}
+.right ul{
+	list-style: none;
+}
+.right li{
+	display: inline-block;
+	margin-right:30px;
+	line-height: 62px;
+	font-size: 21px;
+}
+img{
+	width: 60px;
+}
+
+.middle{
+	width: 100%;
+	/*background-color: yellow;*/
+	/*height: 100px;*/
+}
+
+.nav{
+	position: fixed;
+	width: 17%;
+	background-color: #263238;
+	float: left;
+}
+.nav .move{
+	width: 40px;
+	height: 40px;
+	float: right;
+	cursor: pointer;
+}
+.nav i{
+	color: white;
+	font-size: 21px;
+	padding:9px;
+}
+.content{
+	width: 83%;
+	float: right;
+}
+.breadnav{
+	width: 100px;
+	height: 100px;
+	background-color: blue;
+}
+.breadcrumb > li + li:before {
+    color: #CCCCCC;
+    content: "/ ";
+    padding: 0 5px;
+}
+.table{
+	width: 90%;
+	margin: 20px auto;
+}
+.table caption{
+	font-size: 27px;
+	margin-bottom: 13px;
+}
+.clear{
+	clear: both;
 }
