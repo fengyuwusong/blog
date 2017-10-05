@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台</title>
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+</head>
+<body>
+<!-- <img href="../img/back.jpg" style="position:fixed;margin:0;width:100%;height:100%;"> -->
+<div class="content">
+    <div class="title">登&nbsp;&nbsp;录</div>
+    <form action="" method="post" autocomplete="off">
+        <input type="text" name="name" placeholder="用户名" required="">
+        <input type="password" name="pwd" placeholder="密码" required>
+        <input type="submit" name="login" value="登&nbsp;&nbsp;录"></input>
+    </form>
+</div>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script>
+    $(function () {
+        $(".content").css({"margin-top": ($(window).height() - $(".content").height()) / 2 + "px"})
+    })
+</script>
+</body>
+</html>

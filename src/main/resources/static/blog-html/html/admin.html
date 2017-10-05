@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台页面</title>
+    <link type="text/css" rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="../css/admin.css">
+
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+    <!--解决手机上的显示问题-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--解决IE低版本问题-->
+    <!--[if lt IE9]>
+    <script type="text/javascript" src="../../resources/js/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!-- <header>
+    <div class="left">博客后台</div>
+    <div class="right">
+        <ul>
+            <li><i class="fa fa-bell fa-1x"></i></li>
+            <li><img src="../img/pic.png"></li>
+            <li><span>风雨雾凇</span></li>
+            <li><i class="fa fa-caret-square-o-down fa-1x"></i></li>
+        </ul>
+    </div>
+<div class="clear"></div>
+
+</header> -->
+<div class="nav">
+    <div class="pic">
+        <img src="../img/pic.png">
+        <span>风雨雾凇</span>
+    </div>
+    <div class="navs">
+        <ul>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Java
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">jmeter</a></li>
+                    <li><a href="#">EJB</a></li>
+                    <li><a href="#">Jasper Report</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">分离的链接</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">另一个分离的链接</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- <div class="move">
+        <i class="fa fa-long-arrow-left fa-1x"></i>
+    </div> -->
+</div>
+<div class="content">
+    <div clsss="breadnav">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">2013</a></li>
+            <li class="active">十一月</li>
+        </ol>
+    </div>
+    <div class="table">
+        <table class="table table-striped">
+            <caption>文章列表</caption>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>标题</th>
+                <th>状态</th>
+                <th>作者</th>
+                <th>点赞</th>
+                <th>阅读</th>
+                <th>分类</th>
+                <th>标签</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Tanmay</td>
+                <td>Bangalore</td>
+                <td>560001</td>
+                <td>Tanmay</td>
+                <td>Bangalore</td>
+                <td>560001</td>
+                <td>Tanmay</td>
+                <td>Bangalore</td>
+                <td>560001</td>
+            </tr>
+            <tr>
+                <td>Sachin</td>
+                <td>Mumbai</td>
+                <td>400003</td>
+                <td>Sachin</td>
+                <td>Mumbai</td>
+                <td>400003</td>
+                <td>Sachin</td>
+                <td>Mumbai</td>
+                <td>400003</td>
+            </tr>
+            <tr>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+            </tr>
+            <tr>
+                <td>Tanmay</td>
+                <td>Bangalore</td>
+                <td>560001</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+            </tr>
+            <tr>
+                <td>Sachin</td>
+                <td>Mumbai</td>
+                <td>400003</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+            </tr>
+            <tr>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+            </tr>
+            <tr>
+                <td>Tanmay</td>
+                <td>Bangalore</td>
+                <td>560001</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+            </tr>
+            <tr>
+                <td>Sachin</td>
+                <td>Mumbai</td>
+                <td>400003</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+            </tr>
+            <tr>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+            </tr>
+            <tr>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+                <td>Uma</td>
+                <td>Pune</td>
+                <td>411027</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="../js/jquery.min.js"></script>
+<script>
+    $(function () {
+        var height = $(window).height();
+        // alert(height);
+        $(".content").height(height - $("header").height() - 2 + "px");
+
+        $(".move").on("click", function () {
+
+        })
+    })
+</script>
+</body>
+</html>
