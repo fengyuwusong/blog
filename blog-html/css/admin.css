@@ -3,7 +3,7 @@ body{
 	padding: 0;
 	height: auto;
 }
-header{
+/*header{
 	height: 70px;
 	border-bottom: 2px solid gray;
 }
@@ -15,7 +15,6 @@ header{
 }
 .right{
 	float: right;
-    /*margin-right: 30px;*/
 }
 .right ul{
 	list-style: none;
@@ -25,24 +24,47 @@ header{
 	margin-right:30px;
 	line-height: 62px;
 	font-size: 21px;
-}
-img{
-	width: 60px;
-}
+}*/
 
-.middle{
+
+/*.middle{
 	width: 100%;
-	/*background-color: yellow;*/
-	/*height: 100px;*/
-}
+}*/
 
 .nav{
 	position: fixed;
 	width: 17%;
-	background-color: #263238;
+	background-color: #233545;
 	float: left;
+	height: 100%;
 }
-.nav .move{
+.pic{
+	width: 100px;
+	margin: 20px auto;
+}
+span{
+	color: white;
+    font-size: 23px;
+    line-height: 48px;
+}
+.nav li{
+	padding:10px;
+	list-style:none;
+	margin-left: -25px;
+	padding-left: 25px;
+}
+.nav li:hover{
+	background-color: #2f4050;
+}
+.nav a{
+	text-decoration: none;
+	color: white;
+}
+.nav a:hover{
+	text-decoration: none;
+	color: #a7b1c2;
+}
+/*.nav .move{
 	width: 40px;
 	height: 40px;
 	float: right;
@@ -52,7 +74,7 @@ img{
 	color: white;
 	font-size: 21px;
 	padding:9px;
-}
+}*/
 .content{
 	width: 83%;
 	float: right;

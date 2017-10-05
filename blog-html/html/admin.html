@@ -18,7 +18,7 @@
 </head>
 <body>
 	
-	<header>
+	<!-- <header>
 		<div class="left">博客后台</div>
 		<div class="right">
 			<ul>
@@ -30,12 +30,34 @@
 		</div>
 	<div class="clear"></div>
 
-	</header>
-	<div class="middle">
+	</header> -->
 	<div class="nav">
-		<div class="move">
-			<i class="fa fa-long-arrow-left fa-1x"></i>
+		<div class="pic">
+			<img src="../img/pic.png">
+			<span>风雨雾凇</span>
 		</div>
+		<div class="navs">
+			<ul>
+				<li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Java
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">jmeter</a></li>
+                    <li><a href="#">EJB</a></li>
+                    <li><a href="#">Jasper Report</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">分离的链接</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">另一个分离的链接</a></li>
+                </ul>
+            </li>
+			</ul>
+		</div>
+		<!-- <div class="move">
+			<i class="fa fa-long-arrow-left fa-1x"></i>
+		</div> -->
 	</div>
 	<div class="content">
 		<div clsss="breadnav">
@@ -182,7 +204,6 @@
 		$(function(){
 			var height=$(window).height();
 			// alert(height);
-			$(".nav").height(height-$("header").height()-2+"px");
 			$(".content").height(height-$("header").height()-2+"px");
 
 			$(".move").on("click",function(){
