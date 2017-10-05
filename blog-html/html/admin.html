@@ -34,39 +34,90 @@
 	<div class="nav">
 		<div class="pic">
 			<img src="../img/pic.png">
-			<span>风雨雾凇</span>
+			<span>小+</span>
 		</div>
 		<div class="navs">
-			<ul>
-				<li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Java
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">jmeter</a></li>
-                    <li><a href="#">EJB</a></li>
-                    <li><a href="#">Jasper Report</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">分离的链接</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">另一个分离的链接</a></li>
-                </ul>
-            </li>
-			</ul>
+			<div class="panel-group" id="accordion">
+			    <div class="panel panel-default">			       	
+			        <div class="panel-heading">
+			            <h4 class="panel-title">
+			                <a data-toggle="collapse" data-parent="#accordion" 
+			                href="#collapseOne">
+			                文章管理
+			                </a>
+			            </h4>
+			        </div>
+			        <div id="collapseOne" class="panel-collapse collapse">
+			            <div class="panel-body">
+			                <a href="">文章查看</a>
+			            </div>
+			             <div class="panel-body">
+			                <a href="">文章查看</a>
+			            </div>
+			        </div>
+			    </div>
+			    <div class="panel panel-default">
+			    	<!-- <i class="fa fa-rocket fa-1x"> -->
+			        <div class="panel-heading">
+			            <h4 class="panel-title">
+			                <a data-toggle="collapse" data-parent="#accordion" 
+			                href="#collapseTwo">
+			                文章管理
+			            </a>
+			            </h4>
+			        </div>
+			        <div id="collapseTwo" class="panel-collapse collapse">
+				       <div class="panel-body">
+			                <a href="">文章查看</a>
+			            </div>
+			             <div class="panel-body">
+			                <a href="">文章查看</a>
+			            </div>
+			        </div>
+			    </div>
+			    <div class="panel panel-default">
+			    <!-- <i class="fa fa-rocket fa-1x"> -->
+			        <div class="panel-heading">
+			            <h4 class="panel-title">
+			                <a data-toggle="collapse" data-parent="#accordion" 
+			                href="#collapseThree">
+			                文章管理
+			                </a>
+			            </h4>
+			        </div>
+			        <div id="collapseThree" class="panel-collapse collapse">
+			            <div class="panel-body">
+			                <a href="">文章查看</a>
+			            </div>
+			             <div class="panel-body">
+			                <a href="">文章查看</a>
+			            </div>
+			        </div>
+			    </div>
+			</div>
 		</div>
 		<!-- <div class="move">
 			<i class="fa fa-long-arrow-left fa-1x"></i>
 		</div> -->
 	</div>
 	<div class="content">
-		<div clsss="breadnav">
+		<div id="top">
+			<div class="caret-left">
+				<i class="fa fa-caret-left fa-1x"></i>
+				<i class="fa fa-caret-left fa-1x"></i>
+			</div>
+		<!-- 	<div class="list">
+				<div class="three"></div>
+			</div>
+			<div class="search"></div> -->
+		</div>
+		<!-- <div clsss="breadnav">
 			<ol class="breadcrumb">
 				<li><a href="#">Home</a></li>
 				<li><a href="#">2013</a></li>
 				<li class="active">十一月</li>
 			</ol>
-		</div>
+		</div> -->
 		<div class="table">
 			<table class="table table-striped">
 				<caption>文章列表</caption>

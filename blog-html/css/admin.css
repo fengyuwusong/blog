@@ -42,12 +42,47 @@ body{
 	width: 100px;
 	margin: 20px auto;
 }
+img{
+	border-radius: 50%;
+}
 span{
 	color: white;
     font-size: 23px;
     line-height: 48px;
 }
-.nav li{
+.panel{
+	padding:5px 5px 5px 10px;
+}
+.panel i{
+	color: white;
+}
+.panel:hover{
+	background-color: #2f4050;
+}
+.panel a{
+	color: white;
+	text-decoration: none;
+}
+.panel a:hover{
+	text-decoration: none;
+	color: #a7b1c2;
+}
+.panel-body{
+	color: white;
+	padding: 5px;
+}
+.panel-body a{
+	color: white;
+	font-size: 17px;
+}
+.panel-body:hover{
+	background-color: #2f4050;
+}
+
+/*a:visited{
+	color: #a7b1c2;
+}*/
+/*。nav li{
 	padding:10px;
 	list-style:none;
 	margin-left: -25px;
@@ -63,7 +98,7 @@ span{
 .nav a:hover{
 	text-decoration: none;
 	color: #a7b1c2;
-}
+}*/
 /*.nav .move{
 	width: 40px;
 	height: 40px;
@@ -79,7 +114,42 @@ span{
 	width: 83%;
 	float: right;
 }
-.breadnav{
+#top{
+	width: 100%;
+	height: 40px;
+	background-color: #f3f3f4;
+}
+.caret-left{
+	width: 40px;
+	height: 40px;
+	background-color: red;
+	color:white;
+	font-size: 20px;
+
+
+ /*Example of caret-left*/
+}
+.caret-left i{
+}
+/*.list{
+	position: relative;
+    width: 37px;
+    height: 30px;
+    background-color: #1ab394;
+	margin:15px 0 15px 20px;
+	border-radius: 5px;
+}
+.three{
+	position: relative;
+	width: 12px;
+    height: 2px;
+    border-top: 6px double;
+    border-bottom: 2px solid;
+    color: white;
+    margin:0 auto;
+    top: 10px;
+}*/
+/*.breadnav{
 	width: 100px;
 	height: 100px;
 	background-color: blue;
@@ -88,7 +158,7 @@ span{
     color: #CCCCCC;
     content: "/ ";
     padding: 0 5px;
-}
+}*/
 .table{
 	width: 90%;
 	margin: 20px auto;
