@@ -119,17 +119,24 @@ span{
 	height: 40px;
 	background-color: #f3f3f4;
 }
-.caret-left{
-	width: 40px;
-	height: 40px;
-	background-color: red;
-	color:white;
-	font-size: 20px;
-
-
- /*Example of caret-left*/
+.caret-left,.window{
+	float: left;
+	height: 38px;
+	background-color: white;
+	color:gray;
+	text-align: center;
+    line-height: 38px;
+    cursor: pointer;
+    padding:0 10px;
 }
-.caret-left i{
+.caret-left{
+    margin: 1px 1px;
+	font-size: 20px;
+    display: inline-block;
+}
+.window{
+	margin: 1px 0;
+	
 }
 /*.list{
 	position: relative;
@@ -159,7 +166,15 @@ span{
     content: "/ ";
     padding: 0 5px;
 }*/
-.table{
+.iframe{
+	width: 83%;
+	position: fixed;
+}
+iframe{
+	width: 100%;
+
+}
+/*.table{
 	width: 90%;
 	margin: 20px auto;
 }
@@ -170,3 +185,4 @@ span{
 .clear{
 	clear: both;
 }
+*/

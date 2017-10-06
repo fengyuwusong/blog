@@ -34,7 +34,7 @@
 	<div class="nav">
 		<div class="pic">
 			<img src="../img/pic.png">
-			<span>小+</span>
+			<span>风雨雾凇</span>
 		</div>
 		<div class="navs">
 			<div class="panel-group" id="accordion">
@@ -104,7 +104,16 @@
 		<div id="top">
 			<div class="caret-left">
 				<i class="fa fa-caret-left fa-1x"></i>
-				<i class="fa fa-caret-left fa-1x"></i>
+				<i class="fa fa-caret-left fa-1x" style="margin-left: -5px;"></i>
+			</div>
+			<div class="window window0" onclick="changeStyle(this,0)">
+				首页
+			</div>
+			<div class="window window1" onclick="changeStyle(this,1)">
+				菜单管理&nbsp;<i class="fa fa-times-circle fa-1x"></i> 
+			</div>
+			<div class="window window2" onclick="changeStyle(this,2)">
+				用户管理&nbsp;<i class="fa fa-times-circle fa-1x"></i> 
 			</div>
 		<!-- 	<div class="list">
 				<div class="three"></div>
@@ -118,149 +127,29 @@
 				<li class="active">十一月</li>
 			</ol>
 		</div> -->
-		<div class="table">
-			<table class="table table-striped">
-				<caption>文章列表</caption>
-				<thead>
-					<tr>
-						<th>序号</th>
-						<th>标题</th>
-						<th>状态</th>
-						<th>作者</th>
-						<th>点赞</th>
-						<th>阅读</th>
-						<th>分类</th>
-						<th>标签</th>
-						<th>操作</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Tanmay</td>
-						<td>Bangalore</td>
-						<td>560001</td>
-						<td>Tanmay</td>
-						<td>Bangalore</td>
-						<td>560001</td>
-						<td>Tanmay</td>
-						<td>Bangalore</td>
-						<td>560001</td>
-					</tr>
-					<tr>
-						<td>Sachin</td>
-						<td>Mumbai</td>
-						<td>400003</td>
-						<td>Sachin</td>
-						<td>Mumbai</td>
-						<td>400003</td>
-						<td>Sachin</td>
-						<td>Mumbai</td>
-						<td>400003</td>
-					</tr>
-					<tr>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-					</tr>
-					<tr>
-						<td>Tanmay</td>
-						<td>Bangalore</td>
-						<td>560001</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-					</tr>
-					<tr>
-						<td>Sachin</td>
-						<td>Mumbai</td>
-						<td>400003</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-					</tr>
-					<tr>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-					</tr>
-					<tr>
-						<td>Tanmay</td>
-						<td>Bangalore</td>
-						<td>560001</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-					</tr>
-					<tr>
-						<td>Sachin</td>
-						<td>Mumbai</td>
-						<td>400003</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-					</tr>
-					<tr>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-					</tr>
-					<tr>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="iframe">
+			<iframe src="list.html" frameborder="0"></iframe>
 		</div>
+		
 	</div>
 	
 	<script src="../js/jquery.min.js"></script>
-	<script>
-		$(function(){
-			var height=$(window).height();
-			// alert(height);
-			$(".content").height(height-$("header").height()-2+"px");
-
-			$(".move").on("click",function(){
-				
-			})
-		})
-	</script>
+	<script src="../js/select.js"></script>
+<!-- 	<script>
+		var flag=false;
+		var i;
+		function changeStyle(index){
+		    $(".window"+index).css("background-color","#2f4050");
+		    $(".window"+index).css("color","white");
+		    // $(".window"+index).style.background='#2f4050';
+		    // $(".window"+index).style.color='white';
+		    if(flag){
+		    	$(".window"+i).style.background="white";
+		   		$(".window"+i).style.color="gray";
+		    }
+		    flag=true;
+		    i=index;
+		}
+	</script> -->
 </body>
 </html>
