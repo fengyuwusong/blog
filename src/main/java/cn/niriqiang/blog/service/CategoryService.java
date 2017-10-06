@@ -7,11 +7,10 @@ import cn.niriqiang.blog.enums.ResultEnum;
 import cn.niriqiang.blog.exception.ArticleException;
 import cn.niriqiang.blog.exception.CategoryException;
 import cn.niriqiang.blog.util.ResultUtil;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by fengyuwusong on 2017/9/27 0:43.
@@ -20,8 +19,6 @@ import org.springframework.stereotype.Service;
 public class CategoryService {
     @Autowired
     private CategoryMapper mapper;
-    @Value("${page.size}")
-    private int pageSize;
 
     @Autowired
     private ArticleService articleService;
@@ -71,9 +68,8 @@ public class CategoryService {
         }
     }
 
-    public Result findAll(int currentPage) {
-        PageHelper.startPage(currentPage, pageSize);
-        Page<Category> categoryPage = mapper.findAll();
+    public Result findAll() {
+        List<Category> categoryPage = mapper.findAll();
         return ResultUtil.success(ResultEnum.OK, categoryPage);
     }
 

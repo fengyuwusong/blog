@@ -32,4 +32,11 @@ public class ConfigController {
         return configService.login(adminName, adminPw);
     }
 
+
+    @ApiOperation("获取博客基本信息")
+    @GetMapping
+    public Result get() {
+        return configService.get();
+    }
+
 }

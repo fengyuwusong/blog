@@ -1,9 +1,10 @@
 package cn.niriqiang.blog.domain;
 
 
-import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * TagMapper
@@ -50,7 +51,7 @@ public interface TagMapper {
     Tag findByTagName(String tagName);
 
 
-    Page<Tag> findAll();
+    List<Tag> findAll();
 
     int delete(int id);
 }

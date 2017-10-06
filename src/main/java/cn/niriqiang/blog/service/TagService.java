@@ -8,11 +8,10 @@ import cn.niriqiang.blog.dto.Result;
 import cn.niriqiang.blog.enums.ResultEnum;
 import cn.niriqiang.blog.exception.TagException;
 import cn.niriqiang.blog.util.ResultUtil;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by fengyuwusong on 2017/9/26 1:00.
@@ -21,8 +20,6 @@ import org.springframework.stereotype.Service;
 public class TagService {
     @Autowired
     private TagMapper mapper;
-    @Value("${page.size}")
-    private int pageSize;
     @Autowired
     private ArticleTagsMapper articleTagsMapper;
 
@@ -70,9 +67,8 @@ public class TagService {
         }
     }
 
-    public Result findAll(int currentPage) {
-        PageHelper.startPage(currentPage, pageSize);
-        Page<Tag> tagPage = mapper.findAll();
+    public Result findAll() {
+        List<Tag> tagPage = mapper.findAll();
         return ResultUtil.success(ResultEnum.OK, tagPage);
     }
 

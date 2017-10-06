@@ -25,16 +25,10 @@ public class CategoryController {
 
 
     @ApiOperation("查找全部")
-    @GetMapping("/{currentPage}")
-    public Result findAll(@PathVariable int currentPage) {
-        return categoryService.findAll(currentPage);
+    @GetMapping
+    public Result findAll() {
+        return categoryService.findAll();
     }
-
-//    @ApiOperation("模糊查找")
-//    @GetMapping("/search/{categoryName}")
-//    public Result findByCategoryName(@PathVariable String categoryName) {
-//        return categoryService.findByCategoryName(categoryName);
-//    }
 
     @Admin
     @ApiOperation("更新")

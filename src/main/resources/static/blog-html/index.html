@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>keep pure more smile</title>
@@ -12,13 +12,14 @@
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<div id="vue-data">
+<!--基本配置必须加载完毕在显示-->
+<div id="vue-data" v-if="config!=null">
     <!-- 头部导航条 -->
     <header>
         <div class="container">
             <div class="left">
                 <img class="pic" src="img/pic.png">
-                <a href="#" class="name">风雨雾凇</a>
+                <a href="#" class="name">{{config.blogName}}</a>
             </div>
             <div class="right">
                 <ul class="navs">
@@ -37,16 +38,16 @@
         <div class="container">
             <!-- 座右铭 -->
             <div class="moto">
-                <span class="moto">keep pure more smile</span>
+                <span class="moto">{{config.title}}</span>
             </div>
             <div class="message">
 				<span class="address">
 				<i class="fa fa-map-marker fa-fw"></i>
-				guangdong,china</span>
-                <span class="store"><a href=""><img src="img/store.png" class="icon">cloudfavorites</a></span>
-                <span class="git"><a href="">
+				{{config.address}}</span>
+                <!--<span class="store"><a href=""><img src="img/store.png" class="icon">cloudfavorites</a></span>-->
+                <span class="git"><a :href="config.gitUrl">
 				 <i class="fa fa-github fa-fw"></i>
-				@fengyuwusong</a></span>
+				@{{config.git}}</a></span>
             </div>
 
         </div>
@@ -58,106 +59,94 @@
     <div class="middle">
         <!-- 左边 -->
         <div class="left">
-            <!--文章区域-->
-            <div class="essay">
-                <ul class="essay">
-                    <li v-for="article in articles.list" v-if="article">
-                        <p><a href="html/message.html">{{article.title}}</a></p>
-                        <p class="description">{{article.description}}</p>
-                        <p class="essay_message">
+            <template v-if="articles">
+                <!--文章区域-->
+                <div class="essay">
+                    <ul class="essay">
+                        <li v-for="article in articles.list">
+                            <p><a href="html/message.html">{{article.title}}</a></p>
+                            <p class="description">{{article.description}}</p>
+                            <p class="essay_message">
                             <span class="calendar"><i
-                                    class="fa fa-calendar fa-fw"></i>&nbsp;{{article.updateTime}}</span>
-                            <span class="user"><i class="fa fa-user fa-fw"></i>&nbsp;{{article.author}}</span>
-                            <span class="classify"><i class="fa fa-sticky-note fa-fw"></i>&nbsp;{{article.category.categoryName}}</span>
-                            <span class="tags"><i class="fa fa-tags fa-fw"></i><template
-                                    v-for="tag in article.articleTags">&nbsp;{{tag.tagName}}</template></span>
-                        </p>
-                    </li>
-                </ul>
-            </div>
+                                    class="fa fa-calendar fa-fw"></i>&nbsp;{{article.updateTime | time}}</span>
+                                <span class="user"><i class="fa fa-user fa-fw"></i>&nbsp;{{article.author}}</span>
+                                <span class="classify"><i class="fa fa-sticky-note fa-fw"></i>&nbsp;{{article.category.categoryName}}</span>
+                                <span class="tags"><i class="fa fa-tags fa-fw"></i><template
+                                        v-for="tag in article.articleTags">&nbsp;{{tag.tagName}}</template></span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
 
-            <!--页码区域-->
-            <div class="page">
-                <ul class="pagination pagination_type1 pagination_type4">
-                    <li class="pagination__item"><a href="#0" class="pagination__number">←<span
-                            class="pagination__control pagination__control_prev">prev</span></a></li>
-                    <li class="pagination__item"><a href="#0" class="pagination__number">1</a></li>
-                    <li class="pagination__item"><span class="pagination__number pagination__number_active">2</span>
-                    </li>
-                    <li class="pagination__item"><a href="#0" class="pagination__number">3</a></li>
-                    <li class="pagination__item"><a href="#0" class="pagination__number">4</a></li>
-                    <li class="pagination__item"><a href="#0" class="pagination__number">5</a></li>
-                    <li class="pagination__item"><a href="#0" class="pagination__number">6</a></li>
-                    <li class="pagination__item"><a href="#0" class="pagination__number">7</a></li>
-                    <li class="pagination__item"><a href="#0" class="pagination__number">8</a></li>
-                    <li class="pagination__item"><a href="#0" class="pagination__number">9</a></li>
-                    <li class="pagination__item"><a href="#0" class="pagination__number">10</a></li>
-                    <li class="pagination__item"><a href="#0" class="pagination__number"><span
-                            class="pagination__control pagination__control_next">next</span>→</a></li>
-                </ul>
-            </div>
+                <!--页码区域-->
+                <div class="page">
+                    <ul class="pagination pagination_type1 pagination_type4">
+                        <li class="pagination__item" v-if="articles.hasPreviousPage"
+                        ><a :href="'#'+ articles.prePage "
+                            @click="changePage(articles.prePage)"
+                            class="pagination__number">←<span
+                                class="pagination__control pagination__control_prev">prev</span></a></li>
+
+
+                        <li class="pagination__item" v-for="value in articles.navigatepageNums">
+                            <a :href="'#'+ value " class="pagination__number"
+                               v-bind:class={"pagination__number_active":value==articles.pageNum}
+                               @click="changePage(value)">{{value}}</a>
+                        </li>
+
+                        <li class="pagination__item" v-if="articles.hasNextPage">
+                            <a :href="'#'+ articles.nextPage "
+                               class="pagination__number"
+                               @click="changePage(articles.nextPage)"><span
+                                    class="pagination__control pagination__control_next">next</span>→</a></li>
+                    </ul>
+                </div>
+            </template>
+            <!--todo 添加加载中标识-->
+            <h2 v-else>文章正在加载中</h2>
         </div>
         <!-- 右边 -->
         <div class="right">
+
+
             <!-- 文章分类 -->
             <div class="side_child classify">
                 <div class="part_title">文章分类</div>
                 <div class="part">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-sticky-note" aria-hidden="true"></i>
-                            数据库</a></li>
-                        <li><a href="#"><i class="fa fa-sticky-note" aria-hidden="true"></i>
-                            java web</a></li>
-                        <li><a href="#"><i class="fa fa-sticky-note" aria-hidden="true"></i>
-                            Java</a></li>
-                        <li><a href="#"><i class="fa fa-sticky-note" aria-hidden="true"></i>
-                            git</a></li>
-                    </ul>
+                    <template v-if="category">
+                        <ul>
+                            <li v-for="c in category" @click="getArticlesByCategory(1,c.id)">
+                                <a :href="'#/category/'+ c.categoryName +'/1'">
+                                    <i class="fa fa-sticky-note" aria-hidden="true"></i>
+                                    {{c.categoryName}}
+                                </a>
+                            </li>
+                        </ul>
+                    </template>
+                    <!--todo 添加加载中标识-->
+                    <h2 v-else>分类正在加载中</h2>
                 </div>
             </div>
+
+
+            <!--tag-->
             <div class="side_child hot_tags">
                 <div class="part_title">热门标签</div>
                 <div class="part">
-                    <span><a href=""><i class="fa fa-tag" aria-hidden="true"></i>git</a></span>
-                    <span><a href=""><i class="fa fa-tag" aria-hidden="true"></i>java</a></span>
-                    <span><a href=""><i class="fa fa-tag" aria-hidden="true"></i>mysql</a></span>
-                    <span><a href=""><i class="fa fa-tag" aria-hidden="true"></i>数据库</a></span>
-                    <span><a href=""><i class="fa fa-tag" aria-hidden="true"></i>我是一条很长很长的标签</a></span>
-                    <span><a href=""><i class="fa fa-tag" aria-hidden="true"></i>git</a></span>
-                    <span><a href=""><i class="fa fa-tag" aria-hidden="true"></i>java</a></span>
-                    <span><a href=""><i class="fa fa-tag" aria-hidden="true"></i>mysql</a></span>
-                    <span><a href=""><i class="fa fa-tag" aria-hidden="true"></i>数据库</a></span>
-                    <span><a href=""><i class="fa fa-tag" aria-hidden="true"></i>我是一条很长很长的标签</a></span>
+                    <template v-if="tags">
+                        <span v-for="tag in tags"><a :href="'#/tag/'+ tag.tagName +'/1'"><i class="fa fa-tag"
+                                                                                            aria-hidden="true"></i>{{tag.tagName}}</a></span>
+                    </template>
+                    <!--todo 添加加载中标识-->
+                    <h2 v-else>tag正在加载中</h2>
                 </div>
-            </div>
-            <div class="side_child update">
-                <div class="part_title">最近更新</div>
-                <div class="part">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>
-                            <span class="write_date">2017-9-26</span>
-                            数据库</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>
-                            <span class="write_date">2017-9-26</span>
-                            java web</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>
-                            <span class="write_date">2017-9-26</span>
-                            Java</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>
-                            <span class="write_date">2017-9-26</span>
-                            git</a>
-                        </li>
-                    </ul>
-                </div>
+
             </div>
         </div>
-        <div class="clear"></div>
     </div>
+    <div class="clear"></div>
+    <div class="footer">{{config.footer}}</div>
 </div>
-<div class="footer">Design By 风雨雾凇&&小+</div>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/scroll.js"></script>
 <script type="text/javascript" src="js/index.js"></script>

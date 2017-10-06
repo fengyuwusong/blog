@@ -49,9 +49,9 @@ public class TagController {
 
 
     @ApiOperation("查找全部")
-    @GetMapping("/{currentPage}")
-    public Result findAll(@PathVariable int currentPage) {
-        return tagService.findAll(currentPage);
+    @GetMapping
+    public Result findAll() {
+        return tagService.findAll();
     }
 
 //    @ApiOperation("查找通过名字")

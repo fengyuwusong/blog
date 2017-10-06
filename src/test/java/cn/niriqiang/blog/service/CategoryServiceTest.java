@@ -40,7 +40,7 @@ public class CategoryServiceTest extends BlogApplicationTests {
 
     @Test
     public void findAll() throws Exception {
-        System.out.println(categoryService.findAll(1));
+        System.out.println(categoryService.findAll());
     }
 
     @Test

@@ -30,7 +30,7 @@ public class TagServiceTest extends BlogApplicationTests {
 
     @Test
     public void findAll() {
-        System.out.println(tagService.findAll(1).toString());
+        System.out.println(tagService.findAll().toString());
     }
 
 }

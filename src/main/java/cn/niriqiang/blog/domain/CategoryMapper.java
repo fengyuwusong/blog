@@ -1,8 +1,9 @@
 package cn.niriqiang.blog.domain;
 
-import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Created by fengyuwusong on 2017/9/26 23:17.
@@ -20,5 +21,5 @@ public interface CategoryMapper {
 
     int delete(int id);
 
-    Page<Category> findAll();
+    List<Category> findAll();
 }
