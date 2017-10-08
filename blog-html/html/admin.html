@@ -48,16 +48,16 @@
 			        </div>
 			        <div id="collapseOne" class="panel-collapse collapse">
 			            <div class="panel-body">
-			                <a href="">全部文章</a>
+			                <a href="#" onclick='aclick(0)'>全部文章</a>
 			            </div>
 			             <div class="panel-body">
-			                <a href="">编写文章</a>
+			                <a href="#" onclick='aclick(1)'>编写文章</a>
 			            </div>
 			             <div class="panel-body">
-			                <a href="">分类管理</a>
+			                <a href="#" onclick='aclick(2)'>分类管理</a>
 			            </div>
 			             <div class="panel-body">
-			                <a href="">标签管理</a>
+			                <a href="#" onclick='aclick(3)'>标签管理</a>
 			            </div>
 			        </div>
 			    </div>
@@ -74,10 +74,10 @@
 			        </div>
 			        <div id="collapseTwo" class="panel-collapse collapse">
 				       <div class="panel-body">
-			                <a href="">基本设置</a>
+			                <a href="#" onclick='aclick(4)'>基本设置</a>
 			            </div>
 			             <div class="panel-body">
-			                <a href="">导航设置</a>
+			                <a href="#" onclick='aclick(5)'>导航设置</a>
 			            </div>
 			        </div>
 			    </div>
@@ -115,30 +115,32 @@
 			</ol>
 		</div> -->
 		<div class="iframe">
-			<iframe src="classify.html" frameborder="0"></iframe>
+			<iframe src="list.html" frameborder="0"></iframe>
 			<!-- list.html,setting.html,edit.html,tags.html -->
 		</div>
-		<div class="footer">Design By 风雨雾凇呜呜呜呜呜</div>
+		<!-- <div class="footer">Design By 风雨雾凇呜呜呜呜呜</div> -->
 		
 	</div>
 	
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/select.js"></script>
-<!-- 	<script>
-		var flag=false;
-		var i;
-		function changeStyle(index){
-		    $(".window"+index).css("background-color","#2f4050");
-		    $(".window"+index).css("color","white");
-		    // $(".window"+index).style.background='#2f4050';
-		    // $(".window"+index).style.color='white';
-		    if(flag){
-		    	$(".window"+i).style.background="white";
-		   		$(".window"+i).style.color="gray";
-		    }
-		    flag=true;
-		    i=index;
+	<script>
+		function aclick(index){
+			console.log(index);
+			if(index==0){
+				$("iframe").attr("src","list.html");
+			}else if(index==1){
+				$("iframe").attr("src","edit.html");
+			}else if(index==2){
+				$("iframe").attr("src","classify.html");
+			}else if(index==3){
+				$("iframe").attr("src","tags.html");
+			}else if(index==4){
+				$("iframe").attr("src","setting.html");
+			}else{
+				$("iframe").attr("src","setting.html");
+			}
 		}
-	</script> -->
+	</script>
 </body>
 </html>
