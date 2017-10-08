@@ -8,7 +8,7 @@
 			text-align: center;
 			margin: 20px 0;
 		}
-		.blogName{
+		.setting{
 			text-align: center;
 			margin-top: 40px;
 			font-size:20px;
@@ -23,14 +23,31 @@
 		    border-bottom: 1px solid black;
 		    padding: 5px;
 		    font-size: 16px;
+		    text-align: center;
+		}
+		button{
+			font-size: 17px;
+		    padding: 5px 10px;
+		    border-radius: 4px;
+		    background: transparent;
+		    cursor: pointer;
 		}
 	</style>
 </head>
 <body>
 	<h1>基本配置</h1>
-	<div class="blogName">
-		<span>博客名:</span>
-		<input type="text" name="blogName">
+	<div class="setting">
+		<form action="" method="post">
+			<span>&nbsp;博客名:</span><input type="text" name="blogName" required><br><br>
+			<span>&nbsp;登录名:</span><input type="text" name="loginName" required><br><br>
+			<span>登录密码:</span><input type="text" name="loginPwd" required><br><br>
+			<span>低&nbsp;&nbsp;栏:</span><input type="text" name="bottom" required><br><br>
+			<span>&nbsp;座右铭:</span><input type="text" name="moto" required><br><br>
+			<span>地&nbsp;&nbsp;址:</span><input type="text" name="address" required><br><br>
+			<span>&nbsp;git名称:</span><input type="text" name="gitName" required><br><br>
+			<span>&nbsp;git_url:</span><input type="text" name="gitUrl" required><br><br>
+			<div class="commit"><button>提交</button></div>
+		</form>
 	</div>
 </body>
 </html>
