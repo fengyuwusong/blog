@@ -82,10 +82,12 @@
                 <div class="page">
                     <ul class="pagination pagination_type1 pagination_type4">
                         <li class="pagination__item" v-if="articles.hasPreviousPage"
-                        ><a :href="'#'+ articles.prePage "
-                            @click="changePage(articles.prePage)"
-                            class="pagination__number">←<span
-                                class="pagination__control pagination__control_prev">prev</span></a></li>
+                        >
+                            <a :href="'#'+ articles.prePage "
+                               @click="changePage(articles.prePage)"
+                               class="pagination__number">←<span
+                                    class="pagination__control pagination__control_prev">prev</span></a>
+                        </li>
 
 
                         <li class="pagination__item" v-for="value in articles.navigatepageNums">
@@ -98,7 +100,8 @@
                             <a :href="'#'+ articles.nextPage "
                                class="pagination__number"
                                @click="changePage(articles.nextPage)"><span
-                                    class="pagination__control pagination__control_next">next</span>→</a></li>
+                                    class="pagination__control pagination__control_next">next</span>→</a>
+                        </li>
                     </ul>
                 </div>
             </template>
@@ -134,8 +137,10 @@
                 <div class="part_title">热门标签</div>
                 <div class="part">
                     <template v-if="tags">
-                        <span v-for="tag in tags"><a :href="'#/tag/'+ tag.tagName +'/1'"><i class="fa fa-tag"
-                                                                                            aria-hidden="true"></i>{{tag.tagName}}</a></span>
+                        <span v-for="tag in tags" @click="getArticlesByTag(1,tag.id)">
+                            <a
+                                    :href="'#/tag/'+ tag.tagName +'/1'"><i class="fa fa-tag"
+                                                                           aria-hidden="true"></i>{{tag.tagName}}</a></span>
                     </template>
                     <!--todo 添加加载中标识-->
                     <h2 v-else>tag正在加载中</h2>

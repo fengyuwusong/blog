@@ -8,7 +8,9 @@ var index = {
         articles: null,
         category: null,
         tags: null,
-        config: null
+        config: null,
+        cid: null,
+        tid: null
     },
     URL: {
         //获取文章列表
@@ -44,12 +46,13 @@ var index = {
     getArticleList: function (pageNum) {
         $.get(index.URL.getArticles(pageNum), {}, function (result) {
             index.data.articles = result.data;
+            index.data.cid = null;
+            index.data.tid = null;
         })
     },
 //    获取所有分类函数
     getCategory: function () {
         $.get(index.URL.getCategory(), {}, function (result) {
-            console.table(result.data);
             index.data.category = result.data;
         })
     },
@@ -70,8 +73,17 @@ var index = {
 //    通过类别id获取文章列表
     getArticlesByCategory(pageNum, cid){
         $.get(index.URL.getArticlesByCategory(pageNum, cid), {}, function (result) {
-            console.log(result);
             index.data.articles = result.data;
+            index.data.cid = cid;
+            index.data.tid = null;
+        })
+    },
+//    通过tagId获取文章列表
+    getArticlesByTag(pageNum, tid){
+        $.get(index.URL.getArticlesByTag(pageNum, tid), {}, function (result) {
+            index.data.articles = result.data;
+            index.data.tid = tid;
+            index.data.cid = null;
         })
     },
 //    初始化
@@ -85,20 +97,31 @@ var index = {
         //加载所有config
         index.getConfig();
 
-
         var vue = new Vue({
             el: '#vue-data',
             data: index.data,
             methods: {
                 //    跳转页码
                 changePage: function (pageNum) {
-                    index.getArticleList(pageNum);
+                    if (index.data.cid === null && index.data.tid === null) {
+                        index.getArticleList(pageNum);
+                    } else if (index.data.cid !== null && index.data.tid === null) {
+                        index.getArticlesByCategory(pageNum, index.data.cid);
+                    } else if (index.data.cid === null && index.data.tid !== null) {
+                        index.getArticlesByTag(pageNum, index.data.tid);
+                    }
                 },
                 //通过分类加载
                 getArticlesByCategory: function (pageNum, cid) {
                     //重新赋空值
                     index.data.article = null;
                     index.getArticlesByCategory(pageNum, cid);
+                },
+                //通过tag加载
+                getArticlesByTag: function (pageNum, tid) {
+                    //重新赋空值
+                    index.data.article = null;
+                    index.getArticlesByCategory(pageNum, tid);
                 }
             }
         });

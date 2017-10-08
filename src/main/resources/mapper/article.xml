@@ -143,7 +143,7 @@
         <where>
             category_id=#{_parameter} and a.status=1
         </where>
-        a.id order by a.id
+        order by a.id
     </select>
 
     <select id="search" resultMap="articleMap">
