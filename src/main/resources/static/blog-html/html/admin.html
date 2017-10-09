@@ -124,7 +124,9 @@
 
 <script src="../js/jquery.min.js"></script>
 <script src="../js/select.js"></script>
+<script src="../js/admin.js"></script>
 <script>
+
     function aclick(index) {
         console.log(index);
         if (index == 0) {
@@ -141,6 +143,11 @@
             $("iframe").attr("src", "navSetting.html");
         }
     }
+
+
+    $(function () {
+        admin.init();
+    })
 </script>
 </body>
 </html>

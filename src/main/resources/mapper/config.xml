@@ -59,5 +59,10 @@
         FROM blog.config
     </select>
 
+    <select id="getAdminPw" resultType="cn.niriqiang.blog.domain.Config">
+        SELECT admin_pw
+        FROM blog.config
+    </select>
+
 
 </mapper>

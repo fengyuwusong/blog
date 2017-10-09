@@ -20,4 +20,7 @@ public interface ConfigMapper {
 
     //    获取数据
     Config get();
+
+    //    获取密码校验cookie
+    Config getAdminPw();
 }

@@ -125,7 +125,7 @@
         blog.category b on
         a.category_id=b.id
         <where>
-            category_id=#{_parameter}
+            category_id=#{_parameter} and a.status!=-1
         </where>
         order by a.id
     </select>
@@ -172,7 +172,7 @@
         a.category_id=b.id
         <where>
             title LIKE "%"#{parameter}"%" or category_name LIKE "%"#{parameter}"%" or a.description LIKE
-            "%"#{parameter}"%" or tag_name LIKE "%"#{parameter}"%"
+            "%"#{parameter}"%" or tag_name LIKE "%"#{parameter}"%" and a.status!=-1
         </where>
         ORDER BY a.id
     </select>
@@ -189,6 +189,7 @@
         FROM blog.article a LEFT JOIN
             blog.category b ON
                                 a.category_id = b.id
+        WHERE a.status != -1
         ORDER BY a.id
     </select>
 

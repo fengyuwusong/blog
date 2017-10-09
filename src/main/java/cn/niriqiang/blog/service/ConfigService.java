@@ -1,11 +1,13 @@
 package cn.niriqiang.blog.service;
 
+import cn.niriqiang.blog.annotation.Admin;
 import cn.niriqiang.blog.domain.Config;
 import cn.niriqiang.blog.domain.ConfigMapper;
 import cn.niriqiang.blog.dto.Result;
 import cn.niriqiang.blog.enums.ResultEnum;
 import cn.niriqiang.blog.exception.LoginException;
 import cn.niriqiang.blog.util.CookieUtil;
+import cn.niriqiang.blog.util.Md5Util;
 import cn.niriqiang.blog.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,7 +45,8 @@ public class ConfigService {
         if (res == 1) {
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             HttpServletResponse response = attributes.getResponse();
-            CookieUtil.addCookie(response, "name", adminName, 60 * 60 * 6);
+//            存储6小时
+            CookieUtil.addCookie(response, "login", Md5Util.getMD5(adminPw), 60 * 60 * 6);
             return ResultUtil.success(ResultEnum.OK, adminName);
         }
         throw new LoginException(ResultEnum.ERROR_NAME_PW);
@@ -55,5 +58,11 @@ public class ConfigService {
         }
         return ResultUtil.error(ResultEnum.UNKNOW_ERROR);
     }
+
+    @Admin
+    public Result isLogin() {
+        return ResultUtil.success(ResultEnum.OK, null);
+    }
+
 
 }

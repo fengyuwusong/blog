@@ -39,4 +39,10 @@ public class ConfigController {
         return configService.get();
     }
 
+
+    @ApiOperation("检测是否已经登录")
+    @GetMapping("/isLogin")
+    public Result isLogin() {
+        return configService.isLogin();
+    }
 }

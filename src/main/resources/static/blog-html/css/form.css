@@ -56,3 +56,7 @@ li:hover {
 .page {
     margin-top: 25px;
 }
+
+.active {
+    background-color: #121212;
+}

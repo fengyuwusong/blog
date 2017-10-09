@@ -1,8 +1,11 @@
 package cn.niriqiang.blog.aspect;
 
+import cn.niriqiang.blog.domain.Config;
+import cn.niriqiang.blog.domain.ConfigMapper;
 import cn.niriqiang.blog.enums.ResultEnum;
 import cn.niriqiang.blog.exception.LoginException;
 import cn.niriqiang.blog.util.CookieUtil;
+import cn.niriqiang.blog.util.Md5Util;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -10,6 +13,7 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -24,6 +28,9 @@ import javax.servlet.http.HttpServletRequest;
 @Aspect
 @Component
 public class AdminAspect {
+
+    @Autowired
+    ConfigMapper mapper;
     private final static Logger logger = LoggerFactory.getLogger(AdminAspect.class);
 
     //    定义后台接口切入点
@@ -45,8 +52,10 @@ public class AdminAspect {
         logger.info("AdminAspect:检查是否已经登录");
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-        Cookie cookie = CookieUtil.getCookieByName(request, "name");
-        if (cookie != null) {
+        Cookie cookie = CookieUtil.getCookieByName(request, "login");
+//       和密码的盐值一致
+        Config config = mapper.getAdminPw();
+        if (cookie != null && cookie.getValue().equals(Md5Util.getMD5(config.getAdminPw()))) {
             logger.info("AdminAspect:已经登录");
         } else {
             logger.warn("还没登录，不能使用!");
