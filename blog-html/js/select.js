@@ -8,5 +8,4 @@ $(function(){
 	// console.log(windows);
 
 	
-	
 })

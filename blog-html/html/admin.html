@@ -48,16 +48,16 @@
 			        </div>
 			        <div id="collapseOne" class="panel-collapse collapse">
 			            <div class="panel-body">
-			                <a href="#" onclick='aclick(0)'>全部文章</a>
+			                <a href="#"  class="a0" onclick='aclick(0)'>全部文章</a>
 			            </div>
 			             <div class="panel-body">
-			                <a href="#" onclick='aclick(1)'>编写文章</a>
+			                <a href="#"  class="a1" onclick='aclick(1)'>编写文章</a>
 			            </div>
 			             <div class="panel-body">
-			                <a href="#" onclick='aclick(2)'>分类管理</a>
+			                <a href="#"  class="a2" onclick='aclick(2)'>分类管理</a>
 			            </div>
 			             <div class="panel-body">
-			                <a href="#" onclick='aclick(3)'>标签管理</a>
+			                <a href="#"  class="a3" onclick='aclick(3)'>标签管理</a>
 			            </div>
 			        </div>
 			    </div>
@@ -74,10 +74,10 @@
 			        </div>
 			        <div id="collapseTwo" class="panel-collapse collapse">
 				       <div class="panel-body">
-			                <a href="#" onclick='aclick(4)'>基本设置</a>
+			                <a href="#"  class="a4" onclick='aclick(4)'>基本设置</a>
 			            </div>
 			             <div class="panel-body">
-			                <a href="#" onclick='aclick(5)'>导航设置</a>
+			                <a href="#"  class="a5" onclick='aclick(5)'>导航设置</a>
 			            </div>
 			        </div>
 			    </div>
@@ -93,15 +93,15 @@
 				<i class="fa fa-caret-left fa-1x"></i>
 				<i class="fa fa-caret-left fa-1x" style="margin-left: -5px;"></i>
 			</div>
-			<div class="window window0" onclick="changeStyle(this,0)">
+			<div class="window window0 on" onclick="changeStyle(0)">
 				首页
 			</div>
-			<div class="window window1" onclick="changeStyle(this,1)">
+		<!-- 	<div class="window window1" onclick="changeStyle(this,1)">
 				菜单管理&nbsp;<i class="fa fa-times-circle fa-1x"></i> 
 			</div>
 			<div class="window window2" onclick="changeStyle(this,2)">
 				用户管理&nbsp;<i class="fa fa-times-circle fa-1x"></i> 
-			</div>
+			</div> -->
 		<!-- 	<div class="list">
 				<div class="three"></div>
 			</div>
@@ -125,8 +125,12 @@
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/select.js"></script>
 	<script>
+		//点击左边
+		var text;
+		var windows=[0];
+		var flag;
 		function aclick(index){
-			console.log(index);
+			// console.log(index);
 			if(index==0){
 				$("iframe").attr("src","list.html");
 			}else if(index==1){
@@ -140,7 +144,40 @@
 			}else{
 				$("iframe").attr("src","navSetting.html");
 			}
+			//上方窗口显示
+			flag=($.inArray(index, windows));  
+			if(flag==-1){
+				text=$(".a"+index).text();
+				$("#top").append("<div class='window window"+index+" on' onclick='changeStyle("+index+")'>"+text+"&nbsp;<i class='fa fa-times-circle fa-1x' onclick='dele("+index+")'></i></div>");
+				// console.log( $(".window"+index).siblings());
+				$(".window"+index).siblings().removeClass("on");
+				windows.push(index);
+			}
+			
 		}
+		//点击上边
+		function changeStyle(index){
+			// console.log(index);
+			if(index==0){
+				$("iframe").attr("src","list.html");
+			}else if(index==1){
+				$("iframe").attr("src","edit.html");
+			}else if(index==2){
+				$("iframe").attr("src","classify.html");
+			}else if(index==3){
+				$("iframe").attr("src","tags.html");
+			}else if(index==4){
+				$("iframe").attr("src","setting.html");
+			}else{
+				$("iframe").attr("src","navSetting.html");
+			}
+			$(".window"+index).addClass("on");
+			$(".window"+index).siblings().removeClass("on");
+		}
+		//点击×
+		// function dele(index){
+			
+		// }
 	</script>
 </body>
 </html>

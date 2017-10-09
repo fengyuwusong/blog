@@ -139,7 +139,17 @@ span{
 }
 .window{
 	margin: 1px 0;
-	
+}
+.window:hover{
+	background-color: #121212;
+	color: white;
+}
+.window i{
+	z-index: 100;
+}
+.on{
+	background-color: #121212;
+	color: white;
 }
 /*.list{
 	position: relative;

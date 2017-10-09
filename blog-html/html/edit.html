@@ -37,6 +37,16 @@
         .content h1{
             text-align: center;
         }
+        .add{
+            text-align: center;
+        }
+        input{
+            outline:none;
+            font-size: 17px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            background: transparent;
+        }
     </style>
 
 </head>
@@ -57,6 +67,8 @@
         <div id="test-editormd">
           <textarea style="display:none;" name="content" th:field="*{content}" th:text="${target.content}"></textarea>
         </div>
+        <div class="add"><input type="button" value="提交"></div>
+
     </div>
    
 </body>
