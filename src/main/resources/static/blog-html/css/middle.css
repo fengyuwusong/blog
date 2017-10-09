@@ -5,14 +5,12 @@ body {
 .middle a {
     text-decoration: none;
 }
-
 /*中间部分*/
 .middle {
     width: 1170px;
     margin: auto;
     padding: 20px;
 }
-
 /*左边文章*/
 .middle .left {
     width: 900px;
@@ -37,7 +35,7 @@ body {
     background: -webkit-gradient(linear, 0% 20%, 0% 1000%, from(#fff), to(#fff), color-stop(.1, #f3f3f3));
     border: 1px solid #ccc;
     -webkit-box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.1) inset;
-    -webkit-border-bottom-right-radius: 6px 50px;
+    -webkit-border-bottom-right-radius: 6px 50px;   
 }
 
 .side_child:before {

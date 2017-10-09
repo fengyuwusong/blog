@@ -73,6 +73,7 @@ var index = {
 //    通过类别id获取文章列表
     getArticlesByCategory(pageNum, cid){
         $.get(index.URL.getArticlesByCategory(pageNum, cid), {}, function (result) {
+            console.log(result);
             index.data.articles = result.data;
             index.data.cid = cid;
             index.data.tid = null;
@@ -81,6 +82,7 @@ var index = {
 //    通过tagId获取文章列表
     getArticlesByTag(pageNum, tid){
         $.get(index.URL.getArticlesByTag(pageNum, tid), {}, function (result) {
+            console.log(result);
             index.data.articles = result.data;
             index.data.tid = tid;
             index.data.cid = null;

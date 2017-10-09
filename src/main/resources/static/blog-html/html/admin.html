@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>后台页面</title>
-    <link type="text/css" rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="../css/admin.css">
-
     <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
-    <!--解决手机上的显示问题-->
+    <script src="https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.js"></script>    <!--解决手机上的显示问题-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--解决IE低版本问题-->
     <!--[if lt IE9]>
@@ -37,179 +35,112 @@
         <span>风雨雾凇</span>
     </div>
     <div class="navs">
-        <ul>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Java
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">jmeter</a></li>
-                    <li><a href="#">EJB</a></li>
-                    <li><a href="#">Jasper Report</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">分离的链接</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">另一个分离的链接</a></li>
-                </ul>
-            </li>
-        </ul>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne">
+                            <i class="fa fa-book fa-fw"></i>&nbsp;文章管理
+                            <i class="fa fa-angle-down  fa-fw"></i>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <a href="#" onclick='aclick(0)'>全部文章</a>
+                    </div>
+                    <div class="panel-body">
+                        <a href="#" onclick='aclick(1)'>编写文章</a>
+                    </div>
+                    <div class="panel-body">
+                        <a href="#" onclick='aclick(2)'>分类管理</a>
+                    </div>
+                    <div class="panel-body">
+                        <a href="#" onclick='aclick(3)'>标签管理</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <!-- <i class="fa fa-rocket fa-1x"> -->
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseTwo">
+                            <i class="fa fa-cog fa-fw"></i>&nbsp;博客配置
+                            <i class="fa fa-angle-down  fa-fw"></i>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <a href="#" onclick='aclick(4)'>基本设置</a>
+                    </div>
+                    <div class="panel-body">
+                        <a href="#" onclick='aclick(5)'>导航设置</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- <div class="move">
         <i class="fa fa-long-arrow-left fa-1x"></i>
     </div> -->
 </div>
 <div class="content">
-    <div clsss="breadnav">
+    <div id="top">
+        <div class="caret-left">
+            <i class="fa fa-caret-left fa-1x"></i>
+            <i class="fa fa-caret-left fa-1x" style="margin-left: -5px;"></i>
+        </div>
+        <div class="window window0" onclick="changeStyle(this,0)">
+            首页
+        </div>
+        <div class="window window1" onclick="changeStyle(this,1)">
+            菜单管理&nbsp;<i class="fa fa-times-circle fa-1x"></i>
+        </div>
+        <div class="window window2" onclick="changeStyle(this,2)">
+            用户管理&nbsp;<i class="fa fa-times-circle fa-1x"></i>
+        </div>
+        <!-- 	<div class="list">
+                <div class="three"></div>
+            </div>
+            <div class="search"></div> -->
+    </div>
+    <!-- <div clsss="breadnav">
         <ol class="breadcrumb">
             <li><a href="#">Home</a></li>
             <li><a href="#">2013</a></li>
             <li class="active">十一月</li>
         </ol>
+    </div> -->
+    <div class="iframe">
+        <iframe src="list.html" frameborder="0"></iframe>
+        <!-- list.html,setting.html,edit.html,tags.html -->
     </div>
-    <div class="table">
-        <table class="table table-striped">
-            <caption>文章列表</caption>
-            <thead>
-            <tr>
-                <th>序号</th>
-                <th>标题</th>
-                <th>状态</th>
-                <th>作者</th>
-                <th>点赞</th>
-                <th>阅读</th>
-                <th>分类</th>
-                <th>标签</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Tanmay</td>
-                <td>Bangalore</td>
-                <td>560001</td>
-                <td>Tanmay</td>
-                <td>Bangalore</td>
-                <td>560001</td>
-                <td>Tanmay</td>
-                <td>Bangalore</td>
-                <td>560001</td>
-            </tr>
-            <tr>
-                <td>Sachin</td>
-                <td>Mumbai</td>
-                <td>400003</td>
-                <td>Sachin</td>
-                <td>Mumbai</td>
-                <td>400003</td>
-                <td>Sachin</td>
-                <td>Mumbai</td>
-                <td>400003</td>
-            </tr>
-            <tr>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-            </tr>
-            <tr>
-                <td>Tanmay</td>
-                <td>Bangalore</td>
-                <td>560001</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-            </tr>
-            <tr>
-                <td>Sachin</td>
-                <td>Mumbai</td>
-                <td>400003</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-            </tr>
-            <tr>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-            </tr>
-            <tr>
-                <td>Tanmay</td>
-                <td>Bangalore</td>
-                <td>560001</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-            </tr>
-            <tr>
-                <td>Sachin</td>
-                <td>Mumbai</td>
-                <td>400003</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-            </tr>
-            <tr>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-            </tr>
-            <tr>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>411027</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <!-- <div class="footer">Design By 风雨雾凇呜呜呜呜呜</div> -->
+
 </div>
 
 <script src="../js/jquery.min.js"></script>
+<script src="../js/select.js"></script>
 <script>
-    $(function () {
-        var height = $(window).height();
-        // alert(height);
-        $(".content").height(height - $("header").height() - 2 + "px");
-
-        $(".move").on("click", function () {
-
-        })
-    })
+    function aclick(index) {
+        console.log(index);
+        if (index == 0) {
+            $("iframe").attr("src", "list.html");
+        } else if (index == 1) {
+            $("iframe").attr("src", "edit.html");
+        } else if (index == 2) {
+            $("iframe").attr("src", "classify.html");
+        } else if (index == 3) {
+            $("iframe").attr("src", "tags.html");
+        } else if (index == 4) {
+            $("iframe").attr("src", "setting.html");
+        } else {
+            $("iframe").attr("src", "navSetting.html");
+        }
+    }
 </script>
 </body>
 </html>

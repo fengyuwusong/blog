@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑文章</title>
+    <link rel="stylesheet" type="text/css" href="../css/editormd.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script src="../js/editormd.js"></script>
+    <script type="text/javascript">
+        //    调用编辑器
+        var testEditor;
+        $(function () {
+            testEditor = editormd("test-editormd", {
+                width: "1000px",
+                height: 640,
+                syncScrolling: "single",
+                path: "../lib/"
+            });
+        });
+    </script>
+    <style>
+        /* .title{
+             width: 1000px;
+             margin: 0 auto;
+         }
+         .title span{
+             font-size: 12px;
+             color: #999999;
+         }
+         select{
+             padding: 3px;
+             border-radius: 4px;
+         }*/
+        .editormd {
+            margin: 20px auto;
+        }
+
+        .content h1 {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+<div class="content">
+    <h1>编写文章</h1>
+    <!--    <div class="title">
+           <span>文章标题</span><br>
+           <select>
+               <option value="0">请选择</option>
+               <option value="1">原创</option>
+               <option value="2">转载</option>
+               <option value="3">翻译</option>
+           </select>
+
+       </div> -->
+    <!--编辑器-->
+    <div id="test-editormd">
+        <textarea style="display:none;" name="content" th:field="*{content}" th:text="${target.content}"></textarea>
+    </div>
+</div>
+
+</body>
+</html>
