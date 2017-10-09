@@ -152,6 +152,9 @@
 				// console.log( $(".window"+index).siblings());
 				$(".window"+index).siblings().removeClass("on");
 				windows.push(index);
+			}else{
+				$(".window"+index).addClass("on");
+				$(".window"+index).siblings().removeClass("on");
 			}
 			
 		}
@@ -175,9 +178,27 @@
 			$(".window"+index).siblings().removeClass("on");
 		}
 		//点击×
-		// function dele(index){
-			
-		// }
+		function dele(index){
+			//删除这个window
+			$(".window"+index).remove();
+			flag=($.inArray(index, windows));  
+			windows.splice(flag,1);
+			var last=windows[windows.length-1];
+			changeStyle(last);
+			$(".window"+index).unbind();
+			// alert(windows);
+			stopBubbling(index); 
+
+		}
+		//点击×时不会触发父类
+		function stopBubbling(e) {
+	        e = window.event || e;
+	        if (e.stopPropagation) {
+	            e.stopPropagation();      //阻止事件 冒泡传播
+	        } else {
+	            e.cancelBubble = true;   //ie兼容
+	        }
+	    }
 	</script>
 </body>
 </html>

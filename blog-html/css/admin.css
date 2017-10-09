@@ -125,8 +125,6 @@ span{
 .caret-left,.window{
 	float: left;
 	height: 38px;
-	background-color: white;
-	color:gray;
 	text-align: center;
     line-height: 38px;
     cursor: pointer;
@@ -140,15 +138,21 @@ span{
 .window{
 	margin: 1px 0;
 }
+.window span{
+	font-size: 14px;
+	line-height: 38px;
+	background-color: white;
+	color:gray;
+}
 .window:hover{
-	background-color: #121212;
+	background-color: #233545;
 	color: white;
 }
 .window i{
 	z-index: 100;
 }
 .on{
-	background-color: #121212;
+	background-color: #233545;
 	color: white;
 }
 /*.list{
