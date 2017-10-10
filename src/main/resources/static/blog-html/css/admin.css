@@ -1,4 +1,4 @@
-body {
+body{
     margin: 0;
     padding: 0;
     height: auto;
@@ -31,70 +31,57 @@ body {
 	width: 100%;
 }*/
 
-.nav {
+.nav{
     position: fixed;
     width: 13%;
     background-color: #233545;
     float: left;
     height: 100%;
 }
-
-.pic {
+.pic{
     width: 100px;
     margin: 25px auto;
 }
-
-img {
+img{
     border-radius: 50%;
 }
-
-span {
+span{
     color: white;
     font-size: 23px;
     line-height: 48px;
 }
-
-.panel {
-    padding: 5px 5px 5px 25px;
+.panel{
+    padding:5px 5px 5px 25px;
 }
-
-.panel i {
+.panel i{
     color: white;
 }
-
-.panel:hover {
+.panel:hover{
     background-color: #2f4050;
 }
-
-.panel a {
+.panel a{
     color: white;
     text-decoration: none;
 }
-
-.panel a:hover {
+.panel a:hover{
     text-decoration: none;
     color: #a7b1c2;
 }
-
-.panel-body {
+.panel-body{
     color: white;
     padding: 10px;
     padding-left: 35px;
 }
-
-.panel-body a {
+.panel-body a{
     color: white;
     font-size: 17px;
 }
-
-.panel-body:hover {
+.panel-body:hover{
     background-color: #2f4050;
 }
-
-.fa-angle-down {
+.fa-angle-down{
     margin-left: 40px;
 }
-
 /*a:visited{
 	color: #a7b1c2;
 }*/
@@ -126,39 +113,48 @@ span {
 	font-size: 21px;
 	padding:9px;
 }*/
-.content {
+.content{
     width: 87%;
     float: right;
 }
-
-#top {
+#top{
     width: 100%;
     height: 40px;
     background-color: #f3f3f4;
 }
-
-.caret-left, .window {
+.caret-left,.window{
     float: left;
     height: 38px;
-    background-color: white;
-    color: gray;
     text-align: center;
     line-height: 38px;
     cursor: pointer;
-    padding: 0 10px;
+    padding:0 10px;
 }
-
-.caret-left {
+.caret-left{
     margin: 1px 1px;
     font-size: 20px;
     display: inline-block;
 }
-
-.window {
+.window{
     margin: 1px 0;
-
 }
-
+.window span{
+    font-size: 14px;
+    line-height: 38px;
+    background-color: white;
+    color:gray;
+}
+.window:hover{
+    background-color: #233545;
+    color: white;
+}
+.window i{
+    z-index: 100;
+}
+.on{
+    background-color: #233545;
+    color: white;
+}
 /*.list{
 	position: relative;
     width: 37px;
@@ -187,16 +183,14 @@ span {
     content: "/ ";
     padding: 0 5px;
 }*/
-.iframe {
+.iframe{
     width: 87%;
     position: fixed;
 }
-
-iframe {
+iframe{
     width: 100%;
     clear: both;
 }
-
 /*.table{
 	width: 90%;
 	margin: 20px auto;
@@ -209,7 +203,7 @@ iframe {
 	clear: both;
 }
 */
-.footer {
+.footer{
     /*position: fixed;*/
     border-top: 1px solid #ccc;
     margin-bottom: 5px;

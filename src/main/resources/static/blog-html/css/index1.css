@@ -1,93 +1,85 @@
-.moto {
+.moto{
     font-size: 63px;
 }
-
-.message {
+.message{
     padding-top: 10px;
 }
-
-.message span {
+.message span{
     padding-right: 10px;
     font-size: 20px;
 }
-
-.middle .left {
+.middle .left{
     margin-left: -25px;
 }
-
-.middle .left .essay ul {
+.middle .left .essay ul{
     list-style: none;
 }
 
-.middle .left .essay li {
+.middle .left .essay li{
     margin: 20px auto;
     padding: 10px;
-    position: relative;
-    background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(#fff), to(#f3f3f3), color-stop(.1, #fff));
+    position:relative;
+    background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(#fff), to(#f3f3f3), color-stop(.1,#fff));
     border: 1px solid #ccc;
     -webkit-border-radius: 60px 5px;
     -webkit-box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.1) inset;
 }
-
-.middle .left li:before {
+.middle .left li:before{
     content: '';
     width: 50px;
     height: 50px;
-    top: 0;
-    right: 0;
-    position: absolute;
+    top:0; right:0;
+    position:absolute;
     display: inline-block;
-    z-index: -1;
+    z-index:-1;
     -webkit-box-shadow: 10px -10px 8px rgba(0, 0, 0, 0.2);
-    -webkit-transform: rotate(2deg) translate(-14px, 20px) skew(-20deg);
+    -webkit-transform: rotate(2deg)
+    translate(-14px,20px)
+    skew(-20deg);
 }
-
-.middle .left li:after {
+.middle .left li:after{
     content: '';
     width: 100px;
     height: 100px;
-    top: 0;
-    left: 0;
-    position: absolute;
-    z-index: -1;
+    top:0; left:0;
+    position:absolute;
+    z-index:-1;
     display: inline-block;
     -webkit-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
-    -webkit-transform: rotate(2deg) translate(20px, 25px) skew(20deg);
+    -webkit-transform: rotate(2deg)
+    translate(20px,25px)
+    skew(20deg);
 }
-
-.middle .left p {
+.middle .left p{
     padding: 10px;
     /*margin-top: 15px;*/
     text-align: justify;
 }
-
-.middle .left .description {
+.middle .left .description{
     font-size: 15px;
-    color: gray;
+    color:gray;
 }
 
-h1 {
+h1{
     font-size: 20px;
     font-weight: bold;
     margin-top: 5px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
-.middle .left .essay a {
+.middle .left .essay a{
     font-size: 28px;
-    color: #4183c4;
+    color:#4183c4;
+}
+.middle .left .essay a:hover{
+    color:#23527c;
 }
 
-.middle .left .essay a:hover {
-    color: #23527c;
-}
-
-.middle .left .essay_message {
+.middle .left .essay_message{
     display: inline-block;
     font-size: 12px;
-    color: gray;
+    color:gray;
 }
-
-.essay_message span {
+.essay_message span{
     padding-left: 15px;
 }

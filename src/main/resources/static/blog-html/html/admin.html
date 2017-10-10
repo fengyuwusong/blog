@@ -48,16 +48,16 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <a href="#" onclick='aclick(0)'>全部文章</a>
+                        <a href="#" class="sec-nav a0" data-nav="0">全部文章</a>
                     </div>
                     <div class="panel-body">
-                        <a href="#" onclick='aclick(1)'>编写文章</a>
+                        <a href="#" class="sec-nav a1" data-nav="1">编写文章</a>
                     </div>
                     <div class="panel-body">
-                        <a href="#" onclick='aclick(2)'>分类管理</a>
+                        <a href="#" class="sec-nav a2" data-nav="2">分类管理</a>
                     </div>
                     <div class="panel-body">
-                        <a href="#" onclick='aclick(3)'>标签管理</a>
+                        <a href="#" class="sec-nav a3" data-nav="3">标签管理</a>
                     </div>
                 </div>
             </div>
@@ -74,18 +74,15 @@
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <a href="#" onclick='aclick(4)'>基本设置</a>
+                        <a href="#" class="sec-nav a4" data-nav="4">基本设置</a>
                     </div>
                     <div class="panel-body">
-                        <a href="#" onclick='aclick(5)'>导航设置</a>
+                        <a href="#" class="sec-nav a5" data-nav="5">导航设置</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div class="move">
-        <i class="fa fa-long-arrow-left fa-1x"></i>
-    </div> -->
 </div>
 <div class="content">
     <div id="top">
@@ -93,14 +90,8 @@
             <i class="fa fa-caret-left fa-1x"></i>
             <i class="fa fa-caret-left fa-1x" style="margin-left: -5px;"></i>
         </div>
-        <div class="window window0" onclick="changeStyle(this,0)">
+        <div class="window window0 on" data-nav="0">
             首页
-        </div>
-        <div class="window window1" onclick="changeStyle(this,1)">
-            菜单管理&nbsp;<i class="fa fa-times-circle fa-1x"></i>
-        </div>
-        <div class="window window2" onclick="changeStyle(this,2)">
-            用户管理&nbsp;<i class="fa fa-times-circle fa-1x"></i>
         </div>
         <!-- 	<div class="list">
                 <div class="three"></div>
@@ -114,7 +105,7 @@
             <li class="active">十一月</li>
         </ol>
     </div> -->
-    <div class="iframe">
+    <div class="frame">
         <iframe src="list.html" frameborder="0"></iframe>
         <!-- list.html,setting.html,edit.html,tags.html -->
     </div>
@@ -126,25 +117,6 @@
 <script src="../js/select.js"></script>
 <script src="../js/admin.js"></script>
 <script>
-
-    function aclick(index) {
-        console.log(index);
-        if (index == 0) {
-            $("iframe").attr("src", "list.html");
-        } else if (index == 1) {
-            $("iframe").attr("src", "edit.html");
-        } else if (index == 2) {
-            $("iframe").attr("src", "classify.html");
-        } else if (index == 3) {
-            $("iframe").attr("src", "tags.html");
-        } else if (index == 4) {
-            $("iframe").attr("src", "setting.html");
-        } else {
-            $("iframe").attr("src", "navSetting.html");
-        }
-    }
-
-
     $(function () {
         admin.init();
     })

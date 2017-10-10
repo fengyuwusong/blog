@@ -4,7 +4,7 @@
  */
 var list = {
     data: {
-        articles: {1: "123"},
+        articles: null,
         cid: null,
         tid: null
     },
@@ -15,12 +15,16 @@ var list = {
     },
     getArticles: function (pageNum) {
         $.get(list.URL.getArticles(pageNum), {}, function (res) {
-            console.log(res.data);
+            console.log(res);
             list.data.articles = res.data
         })
     },
     init: function () {
         list.getArticles(1);
+
+        //编辑
+
+
         var vue = new Vue({
             el: "#vue-data",
             data: list.data,
@@ -36,6 +40,10 @@ var list = {
                     //     list.getArticlesByTag(pageNum, list.data.tid);
                     // }
                 },
+                // show:function(){
+                //     $("#myModalLabel").text("编辑");
+                //     $('#myModal').modal();
+                // }
             }
         })
     }

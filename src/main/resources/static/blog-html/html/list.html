@@ -9,6 +9,7 @@
 </head>
 <body>
 <div id="vue-data">
+    <!--这个判定条件不成立-->
     <template v-if="articles!=null">
         <div class="table">
             <table class="table table-striped">
@@ -43,7 +44,7 @@
                         <span v-for="tag in article.articleTags"> &nbsp; {{tag.tagName}}&nbsp;  </span>
                     </td>
                     <td>
-                        <span><a href="">编辑</a></span>
+                        <span><a href="#myModal" data-target="#myModal">编辑</a></span>
                         <span>置顶</span>
                         <span id="delete">删除</span>
                         <span>分类</span>
@@ -63,16 +64,49 @@
             </ul>
         </div>
     </template>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        模态框（Modal）标题
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    在这里添加一些文本
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        提交更改
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!--所以执行了这里的方法-->
     <template v-else>
         正在加载中。。。
     </template>
 </div>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.js"></script>
 <script src="../js/list.js"></script>
 <script>
     $(function () {
-        list.init()
+        list.init();
+//        $(".edit").on("click",function (e) {
+//            alert("123");
+//            $("#myModalLabel").text("编辑");
+//            $('#myModal').modal();
+//        });
     });
 </script>
 </body>
