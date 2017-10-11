@@ -24,7 +24,6 @@ var list = {
 
         //编辑
 
-
         var vue = new Vue({
             el: "#vue-data",
             data: list.data,
@@ -40,10 +39,11 @@ var list = {
                     //     list.getArticlesByTag(pageNum, list.data.tid);
                     // }
                 },
-                // show:function(){
-                //     $("#myModalLabel").text("编辑");
-                //     $('#myModal').modal();
-                // }
+
+            //    点击编辑方法
+            //     edit:function (index) {
+            //
+            //     }
             }
         })
     }

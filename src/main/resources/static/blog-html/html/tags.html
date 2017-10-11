@@ -5,6 +5,7 @@
     <title>标签管理</title>
     <link href="https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.css" rel="stylesheet">
     <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/tags.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.js"></script>    <!--解决手机上的显示问题-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--解决IE低版本问题-->
@@ -73,7 +74,8 @@
     </style>
 </head>
 <body>
-<div class="table">
+<div class="table" id="vue-data">
+    <template v-if="tags!=null">
     <table class="table table-striped table-hover">
         <caption>标签管理</caption>
         <thead>
@@ -84,98 +86,53 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Tanmay</td>
-            <td>Bangalore</td>
+        <tr v-for="tag in tags">
+            <td>{{tag.id}}</td>
+            <td>{{tag.tagName}}</td>
             <td>
-                <span><a href="">编辑</a></span>
-                <span>置顶</span>
-                <span>删除</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Sachin</td>
-            <td>Mumbai</td>
-            <td>
-                <span><a href="">编辑</a></span>
-                <span>置顶</span>
-                <span>删除</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Uma</td>
-            <td>Pune</td>
-            <td>
-                <span><a href="">编辑</a></span>
-                <span>置顶</span>
-                <span>删除</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Tanmay</td>
-            <td>Bangalore</td>
-            <td>
-                <span><a href="">编辑</a></span>
-                <span>置顶</span>
-                <span>删除</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Sachin</td>
-            <td>Mumbai</td>
-            <td>
-                <span><a href="">编辑</a></span>
-                <span>置顶</span>
-                <span>删除</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Uma</td>
-            <td>Pune</td>
-            <td>
-                <span><a href="">编辑</a></span>
-                <span>置顶</span>
-                <span>删除</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Tanmay</td>
-            <td>Bangalore</td>
-            <td>
-                <span><a href="">编辑</a></span>
-                <span>置顶</span>
-                <span>删除</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Sachin</td>
-            <td>Mumbai</td>
-            <td>
-                <span><a href="">编辑</a></span>
-                <span>置顶</span>
-                <span>删除</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Uma</td>
-            <td>Pune</td>
-            <td>
-                <span><a href="">编辑</a></span>
-                <span>置顶</span>
-                <span>删除</span>
-            </td>
-        </tr>
-        <tr>
-            <td>Uma</td>
-            <td>Pune</td>
-            <td>
-                <span><a href="">编辑</a></span>
+                <span><a href="" href="#myModal" data-target="#myModal" data-toggle="modal">编辑</a></span>
                 <span>置顶</span>
                 <span>删除</span>
             </td>
         </tr>
         </tbody>
     </table>
+    </template>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        编辑
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <span for="title">id：</span>&nbsp;
+                        <input type="text" name="title" class="form-control" id="id" readonly placeholder="文章名">
+                    </div>
+                    <div class="form-group">
+                        <span for="tag">标签名：</span>&nbsp;
+                        <input type="text" name="tag" class="form-control" id="category" placeholder="副标题">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        提交更改
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    <!--所以执行了这里的方法-->
+    <template v-else>
+        正在加载中。。。
+    </template>
 </div>
 <div class="page">
     <ul>
@@ -188,5 +145,13 @@
         <li>></li>
     </ul>
 </div>
+<script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+
+<script>
+    $(function () {
+        tags.init();
+    });
+</script>
+
 </body>
 </html>

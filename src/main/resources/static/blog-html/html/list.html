@@ -44,7 +44,9 @@
                         <span v-for="tag in article.articleTags"> &nbsp; {{tag.tagName}}&nbsp;  </span>
                     </td>
                     <td>
-                        <span><a href="#myModal" data-target="#myModal">编辑</a></span>
+                        <!--将该行的数据显示在modal里传值？-->
+                        <span><a href="#myModal" data-target="#myModal" data-toggle="modal" >编辑</a></span>
+                        <!--将序号提前-->
                         <span>置顶</span>
                         <span id="delete">删除</span>
                         <span>分类</span>
@@ -73,11 +75,30 @@
                         &times;
                     </button>
                     <h4 class="modal-title" id="myModalLabel">
-                        模态框（Modal）标题
+                        编辑
                     </h4>
                 </div>
                 <div class="modal-body">
-                    在这里添加一些文本
+                    <div class="form-group">
+                        <span for="title">文章名：</span>&nbsp;
+                        <input type="text" name="title" class="form-control" id="title" placeholder="文章名">
+                    </div>
+                    <div class="form-group">
+                        <span for="category">副标题：</span>&nbsp;
+                        <input type="text" name="category" class="form-control" id="category" placeholder="副标题">
+                    </div>
+                    <div class="form-group">
+                        <span for="">分&nbsp;&nbsp;&nbsp;类：</span>&nbsp;
+                        <input type="text" name="" class="form-control" id="" placeholder="分类">
+                    </div>
+                    <div class="form-group">
+                        <span for="articleTags">标&nbsp;&nbsp;&nbsp;签：</span>&nbsp;
+                        <input type="text" name="articleTags" class="form-control" id="articleTags" placeholder="标签">
+                    </div>
+                    <div class="form-group">
+                        <span for="author">作&nbsp;&nbsp;&nbsp;者：</span>&nbsp;
+                        <input type="text" name="author" class="form-control" id="author" placeholder="作者">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭
@@ -102,11 +123,6 @@
 <script>
     $(function () {
         list.init();
-//        $(".edit").on("click",function (e) {
-//            alert("123");
-//            $("#myModalLabel").text("编辑");
-//            $('#myModal').modal();
-//        });
     });
 </script>
 </body>
