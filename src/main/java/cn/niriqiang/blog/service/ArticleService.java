@@ -185,9 +185,7 @@ public class ArticleService {
     //    后台查看文章
     @Transactional
     public Result adminRead(int articleId) {
-        Result result = findOne(articleId);
-        Article article = (Article) result.getData();
-        return ResultUtil.success(ResultEnum.OK, result);
+        return findOne(articleId);
     }
 
 
@@ -200,7 +198,7 @@ public class ArticleService {
         if (article.getStatus() != 1) {
             throw new ArticleException(ResultEnum.NOT_FOUND);
         }
-        return ResultUtil.success(ResultEnum.OK, result);
+        return result;
     }
 
 

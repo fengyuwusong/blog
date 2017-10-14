@@ -127,7 +127,7 @@
         dialogMaskBgColor: "#fff",
         dialogMaskOpacity: 0.1,
         fontSize: "13px",
-        saveHTMLToTextarea: false,
+        saveHTMLToTextarea: true,
         disabledKeyMaps: [],
 
         onload: function () {
@@ -167,13 +167,13 @@
         pageBreak: true,           // Enable parse page break [========]
         atLink: true,           // for @link
         emailLink: true,           // for email address auto link
-        taskList: false,          // Enable Github Flavored Markdown task lists
-        emoji: false,          // :emoji: , Support Github emoji, Twitter Emoji (Twemoji);
+        taskList: true,          // Enable Github Flavored Markdown task lists
+        emoji: true,          // :emoji: , Support Github emoji, Twitter Emoji (Twemoji);
                                // Support FontAwesome icon emoji :fa-xxx: > Using fontAwesome icon web fonts;
                                // Support Editor.md logo icon emoji :editormd-logo: :editormd-logo-1x: > 1~8x;
-        tex: false,          // TeX(LaTeX), based on KaTeX
-        flowChart: false,          // flowChart.js only support IE9+
-        sequenceDiagram: false,          // sequenceDiagram.js only support IE9+
+        tex: true,          // TeX(LaTeX), based on KaTeX
+        flowChart: true,          // flowChart.js only support IE9+
+        sequenceDiagram: true,          // sequenceDiagram.js only support IE9+
         previewCodeHighlight: true,
 
         toolbar: true,           // show/hide toolbar
@@ -3711,17 +3711,17 @@
             tocDropdown: false,
             tocContainer: "",
             markdown: "",
-            markdownSourceCode: false,
+            markdownSourceCode: true,
             htmlDecode: false,
             autoLoadKaTeX: true,
             pageBreak: true,
             atLink: true,    // for @link
             emailLink: true,    // for mail address auto link
-            tex: false,
-            taskList: false,   // Github Flavored Markdown task lists
-            emoji: false,
-            flowChart: false,
-            sequenceDiagram: false,
+            tex: true,
+            taskList: true,   // Github Flavored Markdown task lists
+            emoji: true,
+            flowChart: true,
+            sequenceDiagram: true,
             previewCodeHighlight: true
         };
 
