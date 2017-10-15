@@ -1,0 +1,12 @@
+.form-group {
+    margin-top: 20px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+span.twitter-typeahead {
+    display: inline !important;
+}
+
