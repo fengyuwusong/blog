@@ -42,11 +42,7 @@ public class ArticleService {
 
     @Transactional
     public Result insertArticle(Article article) {
-//        插入未存在的标签
-        if (article.getCategoryId() == null) {
-            categoryService.insertCategory(article.getCategory());
-            article.setCategoryId(article.getCategory().getId());
-        }
+//        查找分类是否存在
         categoryService.findOne(article.getCategoryId());
         try {
             findByTitle(article.getTitle());
@@ -76,6 +72,8 @@ public class ArticleService {
         if (article == null) {
             throw new ArticleException(ResultEnum.NOT_FOUND);
         }
+        Set<Tag> tags = findTag(article);
+        article.setArticleTags(tags);
         return ResultUtil.success(ResultEnum.OK, article);
     }
 
@@ -176,6 +174,7 @@ public class ArticleService {
                 articleTagsMapper.insert(articleTags);
             }
         } catch (Exception e) {
+//            如果存在TagException说明是存在重复 忽略
             if (!(e instanceof TagException)) {
                 throw e;
             }

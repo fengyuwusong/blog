@@ -37,8 +37,14 @@
                         <span v-if="article.status==2">下架</span>
                     </td>
                     <td>{{article.author}}</td>
-                    <td>{{article.star}}</td>
-                    <td>{{article.readNum}}</td>
+                    <td>
+                        <span v-if="article.star==0||article.star==null">0</span>
+                        <span v-else>{{article.star}}</span>
+                    </td>
+                    <td>
+                        <span v-if="article.readNum==0||article.readNum==null">0</span>
+                        <span v-else>{{article.readNum}}</span>
+                    </td>
                     <td>{{article.category.categoryName}}</td>
                     <td>
                         <span v-for="tag in article.articleTags"> &nbsp; {{tag.tagName}}&nbsp;  </span>

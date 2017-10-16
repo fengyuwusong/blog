@@ -42,6 +42,8 @@ public class ArticleAdminController {
         return articleService.insertArticle(article);
     }
 
+
+    //todo 有bug
     @Admin
     @ApiOperation(value = "更新文章")
     @PutMapping
