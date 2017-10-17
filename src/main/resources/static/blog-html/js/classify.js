@@ -1,33 +1,33 @@
 /**
- * 全部标签页
- * Created by xiaojia on 2017/10/11.
+ * 分类js
+ * Created by fengyuwusong on 2017/10/17.
  */
-var tags = {
+var classify = {
     data: {
-        tags: null,
+        category: null,
     },
     id: null,
     URL: {
-        tag: function () {
-            return "/tag";
+        category: function () {
+            return "/category";
         },
-        deleteTag: function () {
-            return "/tag/" + tags.id;
+        deleteCategory: function () {
+            return "/category/" + classify.id;
         },
     },
-    getTags: function () {
-        $.get(tags.URL.tag(), {}, function (result) {
+    getCategory: function () {
+        $.get(classify.URL.category(), {}, function (result) {
             console.log(result);
             if (result.code !== 200) {
                 alert(result.message);
             }
-            tags.data.tags = result.data;
+            classify.data.category = result.data;
 
         })
     },
-    deleteTag: function () {
+    deleteCategory: function () {
         $.ajax({
-            url: tags.URL.deleteTag(),
+            url: classify.URL.deleteCategory(),
             type: 'DELETE',
             success: function (result) {
                 if (result.code !== 200) {
@@ -35,53 +35,53 @@ var tags = {
                 }
                 //    关闭modal 重新加载页面
                 $("#deleteModal").modal('hide');
-                tags.getTags();
+                classify.getCategory();
             }
         });
     },
-    tagToJson: function () {
-        const tag = {
-            id: tags.id,
-            tagName: $("#tagName").val(),
+    categoryToJson: function () {
+        const category = {
+            id: classify.id,
+            categoryName: $("#categoryName").val(),
+            description: $("#description").val(),
         };
-        return JSON.stringify(tag);
+        return JSON.stringify(category);
     },
-    updateTag: function () {
+    updateCategory: function () {
         $.ajax({
-            url: tags.URL.tag(),
+            url: classify.URL.category(),
             contentType: "application/json; charset=utf-8",
             type: 'PUT',
-            data: tags.tagToJson(),
+            data: classify.categoryToJson(),
             success: function (result) {
                 if (result.code !== 200) {
                     alert(result.message);
                 }
                 //    关闭modal 重新加载页面
                 $("#myModal").modal('hide');
-                tags.getTags();
+                classify.getCategory();
             }
         });
     },
     init: function () {
-        tags.getTags();
-        // console.log(tags);
-        var vue = new Vue({
+        classify.getCategory();
+        const vue = new Vue({
             el: "#vue-data",
-            data: tags.data,
+            data: classify.data,
             methods: {
                 //    获取删除标签id并赋值到data中
                 getId: function (id) {
-                    tags.id = id;
+                    classify.id = id;
                 },
                 //    删除标签
-                deleteTag: function () {
-                    tags.deleteTag();
+                deleteCategory: function () {
+                    classify.deleteCategory();
                 },
                 //更新标签
-                editTag: function () {
-                    tags.updateTag();
+                editCategory: function () {
+                    classify.updateCategory();
                 }
             }
         })
     }
-}
+};

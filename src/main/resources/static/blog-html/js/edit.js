@@ -166,7 +166,7 @@ var edit = {
         const tags = $.map(edit.tagElt.tagsinput('items'), function (tag) {
             return {tagName: tag};
         });
-        console.log(tags);
+        // console.log(tags);
 
         const article = {
             id: edit.id,
@@ -192,6 +192,7 @@ var edit = {
             success: function (res) {
                 if (res.code === 200) {
                     alert("添加完成");
+                    location.href = "./list.html";
                 } else {
                     alert(res.message);
                 }
@@ -210,7 +211,8 @@ var edit = {
             dataType: "json",
             success: function (res) {
                 if (res.code === 200) {
-                    alert("添加完成");
+                    alert("编辑完成");
+                    location.href = "./list.html";
                 } else {
                     alert(res.message);
                 }
@@ -246,8 +248,6 @@ var edit = {
                 // todo更新文章
                 edit.updateArticle();
             }
-
-
         });
     }
 };
