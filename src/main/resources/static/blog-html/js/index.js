@@ -97,7 +97,7 @@ var index = {
         //加载所有config
         index.getConfig();
 
-        var vue = new Vue({
+        let vue = new Vue({
             el: '#vue-data',
             data: index.data,
             methods: {

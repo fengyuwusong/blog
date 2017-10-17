@@ -65,7 +65,7 @@
                 <div class="essay">
                     <ul class="essay">
                         <li v-for="article in articles.list">
-                            <p><a href="html/message.html">{{article.title}}</a></p>
+                            <p><a :href="'html/message.html?id='+article.id">{{article.title}}</a></p>
                             <p class="description">{{article.description}}</p>
                             <p class="essay_message">
                             <span class="calendar"><i

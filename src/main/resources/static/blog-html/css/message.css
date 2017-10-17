@@ -47,6 +47,15 @@ a{
     skew(20deg);
 }
 
+#test-editormd-view {
+    background: none;
+}
+
+#custom-toc-container {
+    background: none;
+}
+
+
 /*.middle .right{
 	width: 242px;
 }*/
