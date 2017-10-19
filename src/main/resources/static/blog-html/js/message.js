@@ -35,7 +35,6 @@ const message = {
     //获取文章
     getArticle: function () {
         $.get(message.URL.getArticle(), {}, function (res) {
-            console.log(res);
             message.data.article = res.data;
             message.editor(res.data.content);
         })

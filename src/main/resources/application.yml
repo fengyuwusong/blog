@@ -40,4 +40,4 @@ pagehelper:
 
 
 page:
-  size: 3
+  size: 10

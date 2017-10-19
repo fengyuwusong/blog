@@ -53,6 +53,14 @@ a{
 
 #custom-toc-container {
     background: none;
+    padding:0;
+}
+
+.essay pre{
+    width:97%;
+}
+.essay table{
+    width:97%;
 }
 
 

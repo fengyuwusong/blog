@@ -28,15 +28,18 @@ $(function () {
         }
         // 右侧
         if (top >= right_top) {
-            right.css({"position": "fixed", "margin-top": "-396px", "right": right_right + "px"});
+             $(".middle .right").css({ "position": "fixed","margin-top": "-396px", "right": right_right + "px"});
             $(".toTop").css({"display": "block"});
         } else {
-            right.css({"position": "", "margin-top": "12px", "right": ""});
+            $(".middle .right").css({"position": "", "margin-top": "12px", "right": ""});
             $(".toTop").css({"display": "none"});
         }
     });
     //回到顶部
-    $(".toTop").on("click", function (e) {
+    $(".toTop").on("click", function () {
         $("html,body").animate({scrollTop: 0}, 300);
+        return false;
     });
+
+
 })

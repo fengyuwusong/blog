@@ -10,6 +10,8 @@ body {
     width: 1170px;
     margin: auto;
     padding: 20px;
+    height: 100%;
+    overflow: hidden;
 }
 /*左边文章*/
 .middle .left {
@@ -18,6 +20,7 @@ body {
 }
 
 .middle .right {
+    position:relative;
     margin-top: 12px;
     float: left;
     width: 242px;
@@ -126,7 +129,7 @@ body {
     font-size: 40px;
     background-color: #4183c4;
     border-radius: 5px;
-    display: block;
+    display: none;
     z-index: 100;
 }
 
