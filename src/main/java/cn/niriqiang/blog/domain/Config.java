@@ -39,4 +39,25 @@ public class Config {
 
     @ApiModelProperty(value = "gitUrl")
     private String gitUrl;
+
+    @ApiModelProperty(value = "nav1Name")
+    private String nav1Name;
+    @ApiModelProperty(value = "nav1Url")
+    private String nav1Url;
+    @ApiModelProperty(value = "nav2Name")
+    private String nav2Name;
+    @ApiModelProperty(value = "nav2Url")
+    private String nav2Url;
+    @ApiModelProperty(value = "nav3Name")
+    private String nav3Name;
+    @ApiModelProperty(value = "nav3Url")
+    private String nav3Url;
+    @ApiModelProperty(value = "nav4Name")
+    private String nav4Name;
+    @ApiModelProperty(value = "nav4Url")
+    private String nav4Url;
+    @ApiModelProperty(value = "nav5Name")
+    private String nav5Name;
+    @ApiModelProperty(value = "nav5Url")
+    private String nav5Url;
 }

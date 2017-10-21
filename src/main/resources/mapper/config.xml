@@ -6,34 +6,46 @@
 
     <update id="update">
         UPDATE blog.config
+        # suffixOverrides 去掉最后的逗号
+        <!--        <trim prefix="set" suffixOverrides=",">-->
         <set>
             <if test="adminName!=null">
-                <where>admin_name = #{adminName},</where>
+                admin_name = #{adminName},
             </if>
             <if test="adminPw!=null">
-                <where>admin_pw = #{adminPw},</where>
+                admin_pw = #{adminPw},
             </if>
             <if test="blogName!=null">
-                <where>blog_name = #{blogName},</where>
+                blog_name = #{blogName},
             </if>
             <if test="footer!=null">
-                <where>footer = #{footer},</where>
+                footer = #{footer},
             </if>
-            <if test="blogPic!=null">
-                <where>blog_pic = #{blogPic},</where>
-            </if>
+            <!--<if test="blogPic!=null">-->
+            <!--blog_pic = #{blogPic},-->
+            <!--</if>-->
             <if test="title!=null">
-                <where>title = #{title},</where>
+                title = #{title},
             </if>
             <if test="address!=null">
-                <where>address = #{address},</where>
+                address = #{address},
             </if>
             <if test="git!=null">
-                <where>git = #{git},</where>
+                git = #{git},
             </if>
             <if test="gitUrl!=null">
-                <where>git_url = #{gitUrl}</where>
+                git_url = #{gitUrl},
             </if>
+            nav1_name = #{nav1Name},
+            nav1_url = #{nav1Url},
+            nav2_Name = #{nav2Name},
+            nav2_url = #{nav2Url},
+            nav3_name = #{nav3Name},
+            nav3_url = #{nav3Url},
+            nav4_name = #{nav4Name},
+            nav4_url = #{nav4Url},
+            nav5_name = #{nav5Name},
+            nav5_url = #{nav5Url}
         </set>
     </update>
     <update id="click">
@@ -55,12 +67,26 @@
             title,
             address,
             git,
-            git_url
+        git_url,
+        nav1_name,
+        nav1_url,
+        nav2_name,
+        nav2_url,
+        nav3_name,
+        nav3_url,
+        nav4_name,
+        nav4_url,
+        nav5_name,
+        nav5_url
         FROM blog.config
     </select>
 
     <select id="getAdminPw" resultType="cn.niriqiang.blog.domain.Config">
         SELECT admin_pw
+        FROM blog.config
+    </select>
+    <select id="adminGet" resultType="cn.niriqiang.blog.domain.Config">
+        SELECT *
         FROM blog.config
     </select>
 

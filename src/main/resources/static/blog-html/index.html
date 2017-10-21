@@ -26,12 +26,11 @@
             </div>
             <div class="right">
                 <ul class="navs">
-                    <li><a href="#" class="nav">Home</a></li>
-                    <li><a href="" class="nav">Spring-Boot</a></li>
-                    <li><a href="" class="nav">Spring-Clond</a></li>
-                    <li><a href="" class="nav">Archives</a></li>
-                    <li><a href="" class="nav">Link</a></li>
-                    <li><a href="" class="nav">About</a></li>
+                    <li><a :href="config.nav1Url" class="nav" v-if="config.nav1Name">{{config.nav1Name}}</a></li>
+                    <li><a :href="config.nav2Url" class="nav" v-if="config.nav2Name">{{config.nav2Name}}</a></li>
+                    <li><a :href="config.nav3Url" class="nav" v-if="config.nav3Name">{{config.nav3Name}}</a></li>
+                    <li><a :href="config.nav4Url" class="nav" v-if="config.nav4Name">{{config.nav4Name}}</a></li>
+                    <li><a :href="config.nav5Url" class="nav" v-if="config.nav5Name">{{config.nav5Name}}</a></li>
                 </ul>
             </div>
         </div>
@@ -155,8 +154,8 @@
     <div class="footer">{{config.footer}}</div>
 </div>
 
-<script src="js/index.js"></script>
 <script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+<script src="js/index.js"></script>
 <script>
     $(function () {
         index.init();

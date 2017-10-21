@@ -29,6 +29,11 @@ public class ConfigService {
         return ResultUtil.success(ResultEnum.OK, config);
     }
 
+    public Result adminGet() {
+        Config config = mapper.adminGet();
+        return ResultUtil.success(ResultEnum.OK, config);
+    }
+
     public Result update(Config config) {
         int res = mapper.update(config);
         if (res == 1) {

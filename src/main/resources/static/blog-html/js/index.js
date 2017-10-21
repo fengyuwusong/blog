@@ -45,7 +45,6 @@ var index = {
     //获取文章列表函数
     getArticleList: function (pageNum) {
         $.get(index.URL.getArticles(pageNum), {}, function (result) {
-            console.log(result);
             index.data.articles = result.data;
             index.data.cid = null;
             index.data.tid = null;
@@ -60,7 +59,6 @@ var index = {
     //获取所有tag函数
     getTags: function () {
         $.get(index.URL.getTags(), {}, function (result) {
-            console.table(result.data);
             index.data.tags = result.data;
         })
     },

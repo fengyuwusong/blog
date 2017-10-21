@@ -26,6 +26,7 @@ public class ConfigController {
         return configService.update(config);
     }
 
+
     @ApiOperation("登录")
     @PostMapping
     public Result login(String adminName, String adminPw) {
@@ -45,4 +46,12 @@ public class ConfigController {
     public Result isLogin() {
         return configService.isLogin();
     }
+
+    @Admin
+    @ApiOperation("获取博客所有配置信息")
+    @GetMapping("/admin")
+    public Result adminGet() {
+        return configService.adminGet();
+    }
+
 }
