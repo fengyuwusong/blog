@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑文章</title>
+    <link rel="stylesheet" type="text/css" href="../css/editormd.css">
+    <link href="https://cdn.bootcss.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!--这个css坑了我一个钟 必须加载单独的对应css-->
+    <link href="https://cdn.bootcss.com/typeahead.js-bootstrap-css/1.2.1/typeaheadjs.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/edit.css">
+    <link href="http://cdn.bootcss.com/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet">
+</head>
+<body>
+<div class="content">
+    <h1>编写文章</h1>
+    <!--编辑器-->
+    <div id="editormd">
+        <textarea style="display:none;" name="content" th:field="*{content}" th:text="${target.content}"></textarea>
+    </div>
+</div>
+<button data-target="#editModal" data-toggle="modal" class="btn btn-default">提交</button>
+
+
+<!--modal窗口-->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title center" id="editModalLabel">
+                    编辑
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizontal">
+
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 control-label">文章标题:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="title" placeholder="请输入文章标题...">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="author" class="col-sm-2 control-label">文章作者:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="author" placeholder="请输入文章作者...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="col-sm-2 control-label">基本描述:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="3" id="description"
+                                      placeholder="请输入基本描述..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category" class="col-sm-2 control-label">分类:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="category" class="form-control" placeholder="请输入分类..."
+                                   autocomplete="off"/>
+                            <input type="hidden" id="cid"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tags" class="col-sm-2 control-label">标签:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="tags" class="form-control" autocomplete="off"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-danger" id="submit">
+                    提交
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.js"></script>
+<script src="https://cdn.bootcss.com/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+<script src="../js/editormd.js"></script>
+<script src="../js/edit.js"></script>
+
+<script>
+    $(function () {
+        edit.init();
+    })
+</script>
+</body>
+</html>
