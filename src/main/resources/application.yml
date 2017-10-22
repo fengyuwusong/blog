@@ -29,6 +29,7 @@ server:
 logging:
   level:
     cn.niriqiang.blog.domain: debug
+  file: ./log.log
 
 #pagehelper分页插件配置
 pagehelper:

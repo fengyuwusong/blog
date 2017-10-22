@@ -79,10 +79,15 @@ public class ArticleService {
 
     public Result updateArticle(Article article) {
         Article result = (Article) findOne(article.getId()).getData();
+//        先将之前的全部删除之前的
         Set<Tag> before = result.getArticleTags();
+        if (before.size() != 0) {
+            ArticleTags articleTags = new ArticleTags();
+            articleTags.setArticleId(article.getId());
+            articleTagsMapper.delete(articleTags);
+        }
+//        之后的全部添加
         Set<Tag> after = article.getArticleTags();
-//        去重复
-        after.removeAll(before);
         if (after.size() != 0) {
             insertArticleTags(article.getId(), after);
         }
@@ -167,17 +172,20 @@ public class ArticleService {
     private void insertArticleTags(int articleId, Set<Tag> tags) {
         ArticleTags articleTags = new ArticleTags();
         articleTags.setArticleId(articleId);
-        try {
-            for (Tag tag : tags) {
+        for (Tag tag : tags) {
+            try {
                 tag = (Tag) tagService.insertTag(tag).getData();
-                articleTags.setTagId(tag.getId());
-                articleTagsMapper.insert(articleTags);
-            }
-        } catch (Exception e) {
+            } catch (Exception e) {
 //            如果存在TagException说明是存在重复 忽略
-            if (!(e instanceof TagException)) {
-                throw e;
+                if (!(e instanceof TagException)) {
+                    throw e;
+                } else {
+                    Result result = tagService.findByTagName(tag.getTagName());
+                    tag = (Tag) result.getData();
+                }
             }
+            articleTags.setTagId(tag.getId());
+            articleTagsMapper.insert(articleTags);
         }
     }
 
