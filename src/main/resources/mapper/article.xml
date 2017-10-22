@@ -110,7 +110,7 @@
             blog.category b ON
                                 a.category_id = b.id
         WHERE status = 1
-        ORDER BY a.id
+        ORDER BY a.create_time desc
     </select>
     <select id="adminFindByCategory" resultMap="articleMap">
         SELECT a.id,
@@ -127,7 +127,7 @@
         <where>
             category_id=#{_parameter} and a.status!=-1
         </where>
-        order by a.id
+        ORDER BY a.create_time desc
     </select>
     <select id="findByCategory" resultMap="articleMap">
         SELECT a.id,
@@ -143,7 +143,7 @@
         <where>
             category_id=#{_parameter} and a.status=1
         </where>
-        order by a.id
+        ORDER BY a.create_time desc
     </select>
 
     <select id="search" resultMap="articleMap">
@@ -155,7 +155,7 @@
             "%"#{parameter}"%" or tag_name LIKE "%"#{parameter}"%"
         </where>
         and status=1
-        ORDER BY a.id
+        ORDER BY a.create_time desc
     </select>
 
     <select id="adminSearch" resultMap="articleMap">
@@ -174,7 +174,7 @@
             title LIKE "%"#{parameter}"%" or category_name LIKE "%"#{parameter}"%" or a.description LIKE
             "%"#{parameter}"%" or tag_name LIKE "%"#{parameter}"%" and a.status!=-1
         </where>
-        ORDER BY a.id
+        ORDER BY a.create_time desc
     </select>
     <select id="adminFindAll" resultMap="articleMap">
         SELECT
@@ -190,7 +190,7 @@
             blog.category b ON
                                 a.category_id = b.id
         WHERE a.status != -1
-        ORDER BY a.id
+        ORDER BY a.create_time desc
     </select>
 
 </mapper>

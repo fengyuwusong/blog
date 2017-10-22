@@ -10,6 +10,9 @@ spring:
       force: true
       charset: UTF-8
       enabled: true
+  mvc:
+    favicon:
+      enabled: false
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

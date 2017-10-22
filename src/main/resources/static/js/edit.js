@@ -79,6 +79,7 @@ var edit = {
             prefetch: {
                 url: edit.URL.getCategory(),  //'%QUERY' 将被用户输入的值代替
                 filter: function (resp) { //服务端未必直接以json array方式返回搜索结果。如果不是的话，指定一下搜索结果在json中的路径。
+                    // console.log(resp);
                     return $.map(resp.data, function (c) {
                         return {categoryName: c.categoryName, cid: c.id};
                     });
