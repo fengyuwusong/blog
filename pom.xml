@@ -104,14 +104,6 @@
             <version>1.1.2</version>
         </dependency>
 
-        <!--上线时需添加tomcat 好像不需要-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
-        <!--<scope>provided</scope>-->
-        <!--</dependency>-->
-
-
     </dependencies>
 
     <build>

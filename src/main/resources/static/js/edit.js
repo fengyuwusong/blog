@@ -71,59 +71,12 @@ var edit = {
 
 //    分类使用预加载
     category: function () {
-
-
-        const category = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('categoryName'), //服务端返回的json中， categoryName对应的字段叫categoryName
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            prefetch: {
-                url: edit.URL.getCategory(),  //'%QUERY' 将被用户输入的值代替
-                filter: function (resp) { //服务端未必直接以json array方式返回搜索结果。如果不是的话，指定一下搜索结果在json中的路径。
-                    // console.log(resp);
-                    return $.map(resp.data, function (c) {
-                        return {categoryName: c.categoryName, cid: c.id};
-                    });
-                }
-            }
-        });
-        category.initialize();
-
-
-        $('#category').typeahead({
-                hint: true,
-                highlight: true,
-                minLength: 1
-            },
-            {
-                name: 'category',
-                displayKey: 'categoryName',
-                source: category.ttAdapter(),
-            })
-
-            .on('typeahead:selected', function (evt, datum) {
-                $('#cid').val(datum.cid);
+        $.get(edit.URL.getCategory(), {}, function (res) {
+            // console.log(res.data);
+            $.map(res.data, function (c) {
+                $("#category").append("<option value='" + c.id + "'>" + c.categoryName + "</option>");
             });
-
-        // const c=category.index.datums;
-        // let flag=false;
-        // if(edit.id!==null){
-        //     flag = true;
-        // }
-
-        //todo 不能选选项之外的
-        // .blur(function(evt, datum){
-        //     $.map(c,function (cc) {
-        //         if(cc.categoryName===$("#category").val()){
-        //             flag=true;
-        //             return;
-        //         }
-        //     });
-        //     if(flag!==true){
-        //         alert("不能填写没添加的分类!");
-        //         $("#category").val("");
-        //         flag=false;
-        //     }
-        // });
+        });
     },
 
 
@@ -168,11 +121,12 @@ var edit = {
         });
         // console.log(tags);
 
+        console.log($('#category').val());
         const article = {
             id: edit.id,
             articleTags: tags,
             author: $("#author").val(),
-            categoryId: $('#cid').val(),
+            categoryId: $('#category').val(),
             content: edit.editor.getMarkdown(),
             description: $("#description").val(),
             title: $("#title").val()
