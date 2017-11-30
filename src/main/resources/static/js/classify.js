@@ -6,6 +6,7 @@ var classify = {
     data: {
         category: null,
     },
+    nullFlag: 0,
     id: null,
     URL: {
         category: function () {
@@ -17,7 +18,6 @@ var classify = {
     },
     getCategory: function () {
         $.get(classify.URL.category(), {}, function (result) {
-            console.log(result);
             if (result.code !== 200) {
                 alert(result.message);
             }
@@ -55,7 +55,28 @@ var classify = {
         };
         return JSON.stringify(category);
     },
+    //进行判空操作
+    checkNull: function (val, output) {
+        if (val === "" || val === undefined || val === null) {
+            alert(output);
+            classify.nullFlag = 1;
+        }
+    },
+    updateCheck: function () {
+        classify.nullFlag = 0;
+        classify.checkNull($("#categoryName").val(), "请填写新的分类~");
+        classify.checkNull($('#description').val(), "请填写新的描述~");
+    },
+    addCheck: function () {
+        classify.nullFlag = 0;
+        classify.checkNull($("#addCategoryName").val(), "请填写分类~");
+        classify.checkNull($('#addDescription').val(), "请填写描述~");
+    },
     updateCategory: function () {
+        classify.updateCheck();
+        if (classify.nullFlag === 1) {
+            return
+        }
         $.ajax({
             url: classify.URL.category(),
             contentType: "application/json; charset=utf-8",
@@ -72,6 +93,10 @@ var classify = {
         });
     },
     addCategory: function () {
+        classify.addCheck();
+        if (classify.nullFlag === 1) {
+            return
+        }
         $.ajax({
             url: classify.URL.category(),
             contentType: "application/json; charset=utf-8",
@@ -93,9 +118,16 @@ var classify = {
             el: "#vue-data",
             data: classify.data,
             methods: {
-                //    获取删除标签id并赋值到data中
+                //    获取删除、编辑标签id并赋值到data中
                 getId: function (id) {
                     classify.id = id;
+                    $.map(classify.data.category, function (c) {
+                        if (c.id === id) {
+                            $("#categoryName").val(c.categoryName);
+                            $("#description").val(c.description);
+                            return
+                        }
+                    });
                 },
                 //    删除标签
                 deleteCategory: function () {

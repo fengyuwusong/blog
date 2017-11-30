@@ -35,11 +35,6 @@ $(function () {
             $(".toTop").css({"display": "none"});
         }
     });
-    //回到顶部
-    $(".toTop").on("click", function () {
-        $("html,body").animate({scrollTop: 0}, 300);
-        return false;
-    });
 
 
 })

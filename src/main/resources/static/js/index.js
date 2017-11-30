@@ -48,6 +48,9 @@ var index = {
             index.data.articles = result.data;
             index.data.cid = null;
             index.data.tid = null;
+            if (result.data.list.length <= 1) {
+                $(".footer").css("position", "fixed");
+            }
         })
     },
 //    获取所有分类函数
@@ -120,9 +123,15 @@ var index = {
                     //重新赋空值
                     index.data.article = null;
                     index.getArticlesByCategory(pageNum, tid);
+                },
+                topTop: function () {
+                    //回到顶部
+                    $("html,body").animate({scrollTop: 0}, 300);
+                    return false;
                 }
             }
         });
+        //vue后面不能在执行语句
         //    vue 格式化时间
         Vue.filter('time', function (value) {
             function add0(m) {

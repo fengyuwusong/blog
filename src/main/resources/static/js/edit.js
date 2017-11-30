@@ -8,6 +8,8 @@ var edit = {
     data: null,
     //文章id
     id: null,
+    //空flag
+    nullFlag: 0,
     tagElt: $('#tags'),
     URL: {
         getArticle: function () {
@@ -119,9 +121,6 @@ var edit = {
         const tags = $.map(edit.tagElt.tagsinput('items'), function (tag) {
             return {tagName: tag};
         });
-        // console.log(tags);
-
-        console.log($('#category').val());
         const article = {
             id: edit.id,
             articleTags: tags,
@@ -133,10 +132,33 @@ var edit = {
         };
         return JSON.stringify(article);
     },
+    //进行判空操作
+    checkNull: function (val, output) {
+        if (val === "" || val === undefined || val === null) {
+            alert(output);
+            edit.nullFlag = 1;
+        }
+    },
+    check: function () {
+        edit.nullFlag = 0;
+        const tags = $.map(edit.tagElt.tagsinput('items'), function (tag) {
+            return {tagName: tag};
+        });
+        edit.checkNull(tags.length > 0 ? tags.length : null, "请至少填写一个标签~");
+        edit.checkNull($("#author").val(), "请填写作者~");
+        edit.checkNull($('#category').val(), "请选择分类~");
+        edit.checkNull(edit.editor.getMarkdown(), "请填写文章内容~");
+        edit.checkNull($("#description").val(), "请填写文章描述~");
+        edit.checkNull($("#title").val(), "请填写文章标题~");
+    },
 
 
     //添加文章方法
     addArticle: function () {
+        edit.check();
+        if (edit.nullFlag === 1) {
+            return
+        }
         $.ajax({
             type: "POST",
             url: edit.URL.addOrUpdateArticle(),
@@ -157,6 +179,10 @@ var edit = {
         });
     },
     updateArticle: function () {
+        edit.check();
+        if (edit.nullFlag === 1) {
+            return
+        }
         $.ajax({
             type: "PUT",
             url: edit.URL.addOrUpdateArticle(),

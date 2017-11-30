@@ -47,25 +47,25 @@ body {
     content: '';
     width: 50px;
     height: 100px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    -webkit-box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
-    z-index: -1;
-    -webkit-transform: translate(-35px, -40px) skew(0deg, 30deg) rotate(-25deg);
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
+    /*-webkit-box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);*/
+    /*z-index: -1;*/
+    /*-webkit-transform: translate(-35px, -40px) skew(0deg, 30deg) rotate(-25deg);*/
 }
 
 .side_child:after {
     content: '';
     width: 100px;
     height: 100px;
-    top: 0;
-    left: 0;
-    position: absolute;
-    display: inline-block;
-    z-index: -1;
-    -webkit-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
-    -webkit-transform: rotate(2deg) translate(20px, 25px) skew(20deg);
+    /*top: 0;*/
+    /*left: 0;*/
+    /*position: absolute;*/
+    /*display: inline-block;*/
+    /*z-index: -1;*/
+    /*-webkit-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);*/
+    /*-webkit-transform: rotate(2deg) translate(20px, 25px) skew(20deg);*/
 }
 
 .part_title {

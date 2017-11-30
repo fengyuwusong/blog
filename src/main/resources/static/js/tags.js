@@ -7,6 +7,7 @@ var tags = {
         tags: null,
     },
     id: null,
+    nullFlag: 0,
     URL: {
         tag: function () {
             return "/tag";
@@ -46,7 +47,22 @@ var tags = {
         };
         return JSON.stringify(tag);
     },
+    //进行判空操作
+    checkNull: function (val, output) {
+        if (val === "" || val === undefined || val === null) {
+            alert(output);
+            tags.nullFlag = 1;
+        }
+    },
+    updateCheck: function () {
+        tags.nullFlag = 0;
+        tags.checkNull($("#tagName").val(), "请填写新的标签名~");
+    },
     updateTag: function () {
+        tags.updateCheck();
+        if (tags.nullFlag === 1) {
+            return
+        }
         $.ajax({
             url: tags.URL.tag(),
             contentType: "application/json; charset=utf-8",
@@ -72,6 +88,12 @@ var tags = {
                 //    获取删除标签id并赋值到data中
                 getId: function (id) {
                     tags.id = id;
+                    $.map(tags.data.tags, function (c) {
+                        if (c.id === id) {
+                            $("#tagName").val(c.tagName);
+                            return
+                        }
+                    });
                 },
                 //    删除标签
                 deleteTag: function () {

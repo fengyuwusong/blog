@@ -34,8 +34,8 @@ public class Swagger2 {
                 .title("Blog")
                 .description("博客接口介绍")
                 .termsOfServiceUrl("www.niriqiang.cn")
-                .contact("倪日强")
-                .version("0.0.1-SNAPSHOT")
+                .contact("风雨雾凇")
+                .version("1.0.0-SNAPSHOT")
                 .build();
     }
 }

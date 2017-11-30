@@ -36,6 +36,9 @@ const message = {
     getArticle: function () {
         $.get(message.URL.getArticle(), {}, function (res) {
             message.data.article = res.data;
+            if (res.data.content.length < 60) {
+                $(".footer").css("position", "fixed");
+            }
             message.editor(res.data.content);
         })
     },
@@ -72,8 +75,13 @@ const message = {
             let vue = new Vue({
                 el: '#vue-data',
                 data: message.data,
-                // methods: {
-                // }
+                methods: {
+                    topTop: function () {
+                        //回到顶部
+                        $("html,body").animate({scrollTop: 0}, 300);
+                        return false;
+                    }
+                }
             });
             //    vue 格式化时间
             Vue.filter('time', function (value) {

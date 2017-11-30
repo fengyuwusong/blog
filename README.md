@@ -1,55 +1,62 @@
 个人博客系统
 ===========================
 
-###########环境依赖
-node v0.10.28+
-reids ~
+### 环境依赖
+- jdk v1.8.0_65+
+- mysql 5.6+
+- 墨刀
+- idea
 
-###########部署步骤
-1. 添加系统环境变量
-    export $PORTAL_VERSION="production" // production, test, dev
+### 技术选型
+- 后端
+    - springBoot 
+    - mybatis
+    - pagehelper 分页插件
+    - druid 数据库连接池
+    - swagger2 接口文档辅助
+    - lombok 基于注解完成get/set
+- 前端
+    - Bootstrap
+    - JQuery
+    - Vue
+    - editormd
+- 其他
+    - 畅言评论
 
+### 项目路由
+- 前台
+    - https://www.fengyuwusong.cn
+- 后台
+    - https://www.fengyuwusong.cn/html/admin.html 用户名密码 admin
 
-2. npm install  //安装node运行环境
-
-3. gulp build   //前端编译
-
-4. 启动两个配置(已forever为例)
-    eg: forever start app-service.js
-        forever start logger-service.js
-
-
-###########目录结构描述
-├── Readme.md                   // help
-├── app                         // 应用
-├── config                      // 配置
-│   ├── default.json
-│   ├── dev.json                // 开发环境
-│   ├── experiment.json         // 实验
-│   ├── index.js                // 配置控制
-│   ├── local.json              // 本地
-│   ├── production.json         // 生产环境
-│   └── test.json               // 测试环境
-├── data
-├── doc                         // 文档
-├── environment
-├── gulpfile.js
-├── locales
-├── logger-service.js           // 启动日志配置
-├── node_modules
-├── package.json
-├── app-service.js              // 启动应用配置
-├── static                      // web静态资源加载
-│   └── initjson
-│   	└── config.js 		// 提供给前端的配置
-├── test
-├── test-service.js
-└── tools
+### swagger接口文档
+![swagger接口文档](http://www.fengyuwusong.cn/images/swagger-ui.png)
 
 
+### 目录结构描述
 
-###########V1.0.0 版本内容更新
-1. 新功能	 aaaaaaaaa
-2. 新功能	 bbbbbbbbb
-3. 新功能	 ccccccccc
-4. 新功能	 ddddddddd
+├── src                      
+│   ├── main
+|           ├── java        
+|               ├── cn.niriqiang.blog
+|                   ├── annotation       //注解类
+|                   ├── aspect           //拦截器
+|                   ├── controller       
+|                   ├── domain           //model
+|                   ├── dto
+|                   ├── enums            //返回结果枚举类
+|                   ├── exception        //异常类
+|                   ├── handle           //统一异常返回类
+|                   ├── service
+|                   ├── util             //工具包
+|                   ├── BlogApplication   //启动类
+|                   ├── Swagger2          // swagger2配置
+|           ├── resources
+|               ├── mapper               //mybatis mapper
+|               ├── static               //静态文件
+|               ├── application.yml      //springboot 配置文件
+│   ├── test                // 单元测试代码
+├── Valet.mp           //墨刀设计图
+├── LICENSE                        
+└── Readme.md                       
+

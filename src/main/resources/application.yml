@@ -13,6 +13,8 @@ spring:
   mvc:
     favicon:
       enabled: false
+  thymeleaf:
+    cache: false
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -41,6 +43,7 @@ pagehelper:
   supportMethodsArguments: true
   params: count:countSql
   row-bounds-with-count: true
+
 
 
 page:

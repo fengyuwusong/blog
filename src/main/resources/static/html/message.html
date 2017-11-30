@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="../css/middle.css">
     <link rel="stylesheet" type="text/css" href="../css/footer.css">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
 <div id="vue-data" v-if="config!=null&&article!=null">
@@ -44,6 +46,7 @@
             </div>
             <div class="date">
                 <span class="calendar"><i class="fa fa-calendar fa-fw"></i>&nbsp;{{article.updateTime | time}}</span>
+                <span class="calendar"><i class="fa  fa-book fa-fw"></i>&nbsp;{{article.readNum}}</span>
                 <span class="git"><a :href="config.gitUrl">
 				 <i class="fa fa-github fa-fw"></i>
 				@{{config.git}}</a></span>
@@ -61,7 +64,42 @@
                         <textarea style="display:none;" name="test-editormd-markdown-doc">###Hello world!</textarea>
                     </label>
                 </div>
-
+                <!--PC和WAP自适应版-->
+                <div id="SOHUCS" sid="{{article.id}}"></div>
+                <script type="text/javascript">
+                    (function () {
+                        var appid = 'cysJQ6VLi';
+                        var conf = 'prod_8ee6318f6ec10099dd28c4fa966046c1';
+                        var width = window.innerWidth || document.documentElement.clientWidth;
+                        if (width < 960) {
+                            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+                        } else {
+                            var loadJs = function (d, a) {
+                                var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                                var b = document.createElement("script");
+                                b.setAttribute("type", "text/javascript");
+                                b.setAttribute("charset", "UTF-8");
+                                b.setAttribute("src", d);
+                                if (typeof a === "function") {
+                                    if (window.attachEvent) {
+                                        b.onreadystatechange = function () {
+                                            var e = b.readyState;
+                                            if (e === "loaded" || e === "complete") {
+                                                b.onreadystatechange = null;
+                                                a()
+                                            }
+                                        }
+                                    } else {
+                                        b.onload = a
+                                    }
+                                }
+                                c.appendChild(b)
+                            };
+                            loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+                                window.changyan.api.config({appid: appid, conf: conf})
+                            });
+                        }
+                    })(); </script>
             </div>
         </div>
         <!-- 右边 -->
@@ -76,12 +114,11 @@
         <div class="clear"></div>
     </div>
 
-    <div class="toTop">
+    <div class="toTop" @click="topTop()">
         <i class="fa fa-angle-up" aria-hidden="true" id="up"></i>
     </div>
     <div class="footer">{{config.footer}}</div>
 </div>
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
 <script src="https://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>
 <script src="https://cdn.bootcss.com/raphael/2.2.7/raphael.min.js"></script>
@@ -90,7 +127,7 @@
 <script src="https://cdn.bootcss.com/flowchart/1.7.0/flowchart.min.js"></script>
 <script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
 <script src="../js/editormd.js"></script>
-<script type="text/javascript" src="../js/scroll.js"></script>
+<script src="../js/scroll.js"></script>
 <script src="../js/message.js"></script>
 <script>
     $(function () {
