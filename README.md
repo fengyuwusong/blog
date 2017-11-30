@@ -35,28 +35,27 @@
 
 ### 目录结构描述
 
-├── src                      
-│   ├── main
-|           ├── java        
-|               ├── cn.niriqiang.blog
-|                   ├── annotation       //注解类
-|                   ├── aspect           //拦截器
-|                   ├── controller       
-|                   ├── domain           //model
-|                   ├── dto
-|                   ├── enums            //返回结果枚举类
-|                   ├── exception        //异常类
-|                   ├── handle           //统一异常返回类
-|                   ├── service
-|                   ├── util             //工具包
-|                   ├── BlogApplication   //启动类
-|                   ├── Swagger2          // swagger2配置
-|           ├── resources
-|               ├── mapper               //mybatis mapper
-|               ├── static               //静态文件
-|               ├── application.yml      //springboot 配置文件
-│   ├── test                // 单元测试代码
-├── Valet.mp           //墨刀设计图
-├── LICENSE                        
-└── Readme.md                       
-
+    ├── src                      
+    │   ├── main
+    |           ├── java        
+    |               ├── cn.niriqiang.blog
+    |                   ├── annotation       //注解类
+    |                   ├── aspect           //拦截器
+    |                   ├── controller       
+    |                   ├── domain           //model
+    |                   ├── dto
+    |                   ├── enums            //返回结果枚举类
+    |                   ├── exception        //异常类
+    |                   ├── handle           //统一异常返回类
+    |                   ├── service
+    |                   ├── util             //工具包
+    |                   ├── BlogApplication   //启动类
+    |                   ├── Swagger2          // swagger2配置
+    |           ├── resources
+    |               ├── mapper               //mybatis mapper
+    |               ├── static               //静态文件
+    |               ├── application.yml      //springboot 配置文件
+    │   ├── test                // 单元测试代码
+    ├── Valet.mp           //墨刀设计图
+    ├── LICENSE                        
+    └── Readme.md                       
